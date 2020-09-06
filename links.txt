@@ -1,0 +1,10 @@
+https://www.geeksforgeeks.org/handling-click-events-button-android/
+https://www.quora.com/How-do-I-create-xml-files-in-android-studio
+https://download.huihoo.com/google/gdgdevkit/DVD1/www.google.com/design/spec/style/color.html#color-ui-color-palette
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewProfileActivity">
