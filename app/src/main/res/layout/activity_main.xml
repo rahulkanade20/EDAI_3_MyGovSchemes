@@ -9,7 +9,7 @@
 
     <Button
         android:id="@+id/btnProfile"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#03a9f4"
         android:text="Profile"
@@ -23,7 +23,7 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#03a9f4"
         android:text="Refresh"
@@ -36,7 +36,7 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#03a9f4"
         android:text="Recommend"

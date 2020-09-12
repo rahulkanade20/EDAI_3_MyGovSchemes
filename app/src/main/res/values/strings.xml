@@ -2,6 +2,7 @@
     <string name="app_name">MyScheme1.0</string>
     <string name="title_activity_profile">ScrollingActivity</string>
     <string name="large_text">
+
         "Material is the metaphor.\n\n"
 
         "A material metaphor is the unifying theory of a rationalized space and a system of motion."
@@ -91,4 +92,10 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
+
+    <string-array name="genderList">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
 </resources>

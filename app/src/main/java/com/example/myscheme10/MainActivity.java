@@ -11,6 +11,10 @@ public class MainActivity extends AppCompatActivity {
 
     private Button btnProfile;
 
+    private Button refresh;
+
+    private Button recommend;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,12 +28,40 @@ public class MainActivity extends AppCompatActivity {
                 profileInvoke();
             }
         });
+
+        refresh = (Button) findViewById(R.id.button2);
+
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                refreshInvoke();
+            }
+        });
+
+        recommend = (Button) findViewById(R.id.button3);
+
+        recommend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                refreshInvoke();
+            }
+        });
     }
 
     public void profileInvoke() {
 
         Intent intent = new Intent(this, NewProfileActivity.class);
         startActivity(intent);
+
+    }
+
+    public void refreshInvoke() {
+
+
+    }
+
+    public void recommendInvoke() {
+
 
     }
 }

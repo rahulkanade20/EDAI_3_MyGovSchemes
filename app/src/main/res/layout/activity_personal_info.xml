@@ -11,89 +11,69 @@
         android:layout_height="fill_parent"
         android:orientation="vertical" >
 
-
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Family Profile -"
+            android:text="Personal Info -"
             android:textSize="25sp"
             />
 
-
-
         <EditText
-            android:id="@+id/txtSurname"
+            android:id="@+id/editTextTextPersonName8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:hint="Surname"
-             />
+            android:hint="Name"
+            />
 
         <EditText
-            android:id="@+id/txtMemCnt"
+            android:id="@+id/editTextNumber3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:hint="No. of family members"
+            android:hint="Age"
             />
 
         <EditText
-            android:id="@+id/txtState"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
-            android:hint="State"
-             />
-
-        <EditText
-            android:id="@+id/txtCity"
+            android:id="@+id/editTextTextPersonName9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:hint="City"
+            android:hint="Occupation"
             />
 
         <EditText
-            android:id="@+id/txtCaste"
+            android:id="@+id/editTextNumber4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:hint="Caste"
+            android:hint="Yearly Income"
             />
 
-        <EditText
-            android:id="@+id/txtIncome"
+        <Spinner
+            android:id="@+id/spinner1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="Family Income"
-             />
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Member"
             />
 
         <Button
-            android:id="@+id/save1"
+            android:id="@+id/save2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SAVE"
             />
 
-
-
         <Button
-            android:id="@+id/btnBack"
+            android:id="@+id/cancel2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="CANCEL"
-             />
+            />
+
+
+
+
 
     </LinearLayout>
 
-    </ScrollView>
+</ScrollView>
