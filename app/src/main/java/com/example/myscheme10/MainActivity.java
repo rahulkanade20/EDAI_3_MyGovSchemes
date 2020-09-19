@@ -15,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
 
     private Button recommend;
 
+    DBHelper db;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +49,23 @@ public class MainActivity extends AppCompatActivity {
                 refreshInvoke();
             }
         });
+
+        db = new DBHelper(this);
+
+        try {
+            db.createDataBase();
+            db.openDataBase();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        db.close();
+        super.onDestroy();
     }
 
     public void profileInvoke() {
