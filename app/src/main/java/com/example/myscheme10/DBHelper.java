@@ -22,7 +22,7 @@ public class DBHelper extends SQLiteOpenHelper {
     // of your application database.
     private static String DB_PATH = "";
     private static String DB_NAME = "database.db";
-    private SQLiteDatabase myDataBase;
+    private SQLiteDatabase myDataBase; // in-built given by android.
     private final Context myContext;
     private SQLiteOpenHelper sqLiteOpenHelper;
 
@@ -116,7 +116,9 @@ public class DBHelper extends SQLiteOpenHelper {
         // Open your local db as the input stream
         InputStream myInput
                 = myContext.getAssets()
-                .open(DB_NAME);
+                .open(DB_NAME); // DB_NAME here is actually the name of the template database which we have stored in the assets folder.
+                                // We have given the name as database.db itself and hence we are using DB_NAME.
+
 
         // Path to the just created empty db
         String outFileName = DB_PATH;
