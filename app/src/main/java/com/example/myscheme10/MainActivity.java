@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Button recommend;
 
+    public static Family family = new Family();
+
     DBHelper db;
 
 
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         db = new DBHelper(this);
-
+    /*
         try {
             db.createDataBase();
             db.openDataBase();
@@ -59,12 +61,12 @@ public class MainActivity extends AppCompatActivity {
         catch (Exception e) {
             e.printStackTrace();
         }
-
+    */
     }
 
     @Override
     protected void onDestroy() {
-        db.close();
+     //   db.close();
         super.onDestroy();
     }
 

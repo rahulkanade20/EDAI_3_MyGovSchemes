@@ -3,16 +3,29 @@ package com.example.myscheme10;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.EditText;
+
 
 public class NewProfileActivity extends AppCompatActivity {
+
+    String surname;
+    String state;
+    String city;
+    String caste;
+    int familyIncome;
+    int familyMembers;
+
+    Family family1 = new Family();
+
+    Family family1_ = new Family();
 
     private Button btnBack;
 
@@ -20,8 +33,20 @@ public class NewProfileActivity extends AppCompatActivity {
 
     private Button save;
 
+    String[] stringArray = {};
+
+    EditText surnameInput;
+    EditText noOfMemInput;
+    EditText stateInput;
+    EditText cityInput;
+    EditText casteInput;
+    EditText famIncomeInput;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        DBHelper dbh = new DBHelper(getApplicationContext());
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_profile);
         /*
@@ -31,7 +56,15 @@ public class NewProfileActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this); */
-        Log.println(Log.DEBUG, "Test", "Rajesh");
+        Log.println(Log.DEBUG, "Test", "Rahul");
+
+        surnameInput = (EditText) findViewById(R.id.txtSurname);
+        noOfMemInput = (EditText) findViewById(R.id.txtMemCnt);
+        stateInput = (EditText) findViewById(R.id.txtState);
+        cityInput = (EditText) findViewById(R.id.txtCity);
+        casteInput = (EditText) findViewById(R.id.txtCaste);
+        famIncomeInput = (EditText) findViewById(R.id.txtIncome);
+
         btnBack = (Button) findViewById(R.id.btnBack);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +93,11 @@ public class NewProfileActivity extends AppCompatActivity {
                 saveInvoke();
             }
         });
+
+        family1_ = dbh.getFamily();
+
+        surnameInput.setText(family1_.getSurname());
+
     }
 
     public void backInvoke() {
@@ -77,6 +115,37 @@ public class NewProfileActivity extends AppCompatActivity {
 
     public void saveInvoke() {
 
+        surname = surnameInput.getText().toString();
+        state = stateInput.getText().toString();
+        city = cityInput.getText().toString();
+        caste = casteInput.getText().toString();
+        familyMembers = Integer.valueOf(noOfMemInput.getText().toString());
+        familyIncome = Integer.valueOf(famIncomeInput.getText().toString());
+
+        family1.setSurname(surname);
+        family1.setState(state);
+        family1.setCity(city);
+        family1.setCaste(caste);
+        family1.setNoOfMembers(familyMembers);
+        family1.setFamilyIncome(familyIncome);
+
+        boolean result = family1.save(getApplicationContext());
+        if(result == true) {
+
+            Log.println(Log.DEBUG, "Test", "family.save returning true");
+        }
+
+        else {
+
+            Log.println(Log.DEBUG, "Test", "family.save returning false");
+        }
+
+        Log.println(Log.DEBUG, "Test", surname);
+        Log.println(Log.DEBUG, "Test", state);
+        Log.println(Log.DEBUG, "Test", city);
+        Log.println(Log.DEBUG, "Test", caste);
+        Log.println(Log.DEBUG, "Test", Integer.toString(familyMembers));
+        Log.println(Log.DEBUG, "Test", Integer.toString(familyIncome));
 
 
     }
