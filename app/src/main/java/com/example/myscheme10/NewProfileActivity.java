@@ -98,6 +98,15 @@ public class NewProfileActivity extends AppCompatActivity {
 
         surnameInput.setText(family1_.getSurname());
 
+        noOfMemInput.setText(Integer.toString(family1_.getNoOfMembers()));
+
+        stateInput.setText(family1_.getState());
+
+        cityInput.setText(family1_.getCity());
+
+        casteInput.setText(family1_.getCaste());
+
+        famIncomeInput.setText(Integer.toString(family1_.getFamilyIncome()));
     }
 
     public void backInvoke() {

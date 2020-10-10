@@ -24,7 +24,7 @@ public class DBHelper extends SQLiteOpenHelper {
     // of your application database.
     private static String DB_PATH = "";
     private static String DB_NAME = "database2.db";
-    private static int DB_VER = 2;
+    private static int DB_VER = 3;
     private SQLiteOpenHelper sqLiteOpenHelper;
 
     String[] array = {};
@@ -48,7 +48,10 @@ public class DBHelper extends SQLiteOpenHelper {
     {
         try {
             Log.println(Log.DEBUG, "Testsql", "inside DB Create");
-            String sqlstr = "CREATE TABLE " + "FAMILY " + " ( " + "family_id INTEGER NOT NULL, " + "surname TEXT NOT NULL ) ";
+            String sqlstr = "CREATE TABLE " + "FAMILY " + " ( " + "family_id INTEGER NOT NULL, " + "surname TEXT NOT NULL, " + "NoOfMembers INTEGER NOT NULL, " + "state TEXT NOT NULL, " + "city TEXT NOT NULL, " + "familyIncome INTEGER NOT NULL, " + "caste TEXT NOT NULL )";
+
+            Log.println(Log.DEBUG, "sqlquery", sqlstr);
+
 
             db.execSQL(sqlstr);
 
@@ -119,12 +122,13 @@ public class DBHelper extends SQLiteOpenHelper {
         {
             ContentValues contentValues1 = new ContentValues();
             contentValues1.put("family_id", 1);
-        //contentValues1.put("noOfMembers", memOfFamily);
-        //contentValues1.put("state", state);
-        //contentValues1.put("city", city);
-        //contentValues1.put("caste", caste);
-        //contentValues1.put("familyIncome", famIncome);
             contentValues1.put("surname", surname);
+            contentValues1.put("noOfMembers", memOfFamily);
+            contentValues1.put("state", state);
+            contentValues1.put("city", city);
+            contentValues1.put("familyIncome", famIncome);
+            contentValues1.put("caste", caste);
+
             db.beginTransaction();
 
             String sqlStr = "DELETE FROM Family";
@@ -165,15 +169,38 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         try {
-            String SQLQuery = "SELECT surname FROM Family";
+            String SQLQuery = "SELECT * FROM Family";
 
             Cursor result = db.rawQuery(SQLQuery, array);
 
             result.moveToFirst();
 
-        //    Log.println(Log.DEBUG, "from database", Integer.toString(result.getCount()));
+            Log.println(Log.DEBUG, "from database", Integer.toString(result.getColumnCount()));
+            Log.println(Log.DEBUG, "from database", Integer.toString(result.getCount()));
+
 
             family.setSurname(result.getString(result.getColumnIndex("surname")));
+        //    result.moveToFirst();
+            family.setNoOfMembers(result.getInt(result.getColumnIndex("NoOfMembers")));
+        //    result.moveToFirst();
+            family.setFamilyIncome(result.getInt(result.getColumnIndex("familyIncome")));
+        //    result.moveToFirst();
+            family.setCaste(result.getString(result.getColumnIndex("caste")));
+        //    result.moveToFirst();
+            family.setState(result.getString(result.getColumnIndex("state")));
+        //    result.moveToFirst();
+            family.setCity(result.getString(result.getColumnIndex("city")));
+
+            Log.println(Log.DEBUG, "Test3", "inside insertFamily function");
+            Log.println(Log.DEBUG, "Test3", family.getSurname());
+            Log.println(Log.DEBUG, "Test3", family.getState());
+            Log.println(Log.DEBUG, "Test3", family.getCity());
+            Log.println(Log.DEBUG, "Test3", family.getCaste());
+            Log.println(Log.DEBUG, "Test3", Integer.toString(family.getNoOfMembers()));
+            Log.println(Log.DEBUG, "Test3", Integer.toString(family.getFamilyIncome()));
+
+
+
 
             return family;
         } catch (android.database.SQLException e) {
