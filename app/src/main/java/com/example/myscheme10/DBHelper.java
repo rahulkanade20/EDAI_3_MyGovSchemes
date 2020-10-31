@@ -165,7 +165,7 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
     }
-/*
+
     public boolean insertMember(String name, String occupation, String gender, int age, int yearlyIncome) {
 
         Log.println(Log.DEBUG, "TestMember1", "inside insertMember function");
@@ -220,7 +220,7 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
     }
-*/
+
     public Family getFamily() {
 
         Family family = new Family();
@@ -230,18 +230,33 @@ public class DBHelper extends SQLiteOpenHelper {
         try {
             String SQLQuery = "SELECT * FROM Family";
             String SQLQuery1 = "SELECT * FROM Members";
+            String SQLQuery2 = "SELECT name FROM Members";
 
             Cursor result = db.rawQuery(SQLQuery, array);
             Cursor result1 = db.rawQuery(SQLQuery1, array);
+        //    Cursor result2 = db.rawQuery(SQLQuery2, array);
 
             result.moveToFirst();
             result1.moveToFirst();
+        //    result2.moveToFirst();
 
             Log.println(Log.DEBUG, "from database", Integer.toString(result.getColumnCount()));
             Log.println(Log.DEBUG, "from database", Integer.toString(result.getCount()));
 
             Log.println(Log.DEBUG, "from databaseMemb", Integer.toString(result1.getColumnCount()));
             Log.println(Log.DEBUG, "from databaseMemb", Integer.toString(result1.getCount()));
+
+        //    Log.println(Log.DEBUG, "from databaseMemb", Integer.toString(result2.getColumnCount()));
+        //    Log.println(Log.DEBUG, "from databaseMemb", Integer.toString(result2.getCount()));
+
+         //   result1.moveToFirst();
+
+
+            for(int i=1; i<=result1.getCount(); i++) {
+
+                Log.println(Log.DEBUG, "members added", result1.getString(result1.getColumnIndex("name")));
+                result1.moveToNext();
+            }
 
             family.setSurname(result.getString(result.getColumnIndex("surname")));
         //    result.moveToFirst();
@@ -262,8 +277,6 @@ public class DBHelper extends SQLiteOpenHelper {
             Log.println(Log.DEBUG, "Test3", family.getCaste());
             Log.println(Log.DEBUG, "Test3", Integer.toString(family.getNoOfMembers()));
             Log.println(Log.DEBUG, "Test3", Integer.toString(family.getFamilyIncome()));
-
-
 
 
             return family;

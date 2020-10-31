@@ -56,7 +56,7 @@ public class Member {
 
 
     public boolean add(Context context, Member member) {
-/*
+
         try {
             DBHelper dbh = new DBHelper(context);
 
@@ -80,8 +80,7 @@ public class Member {
         finally{
 
         }
-*/
-        return true;
+
 
     }
 

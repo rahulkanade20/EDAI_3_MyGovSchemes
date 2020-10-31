@@ -110,7 +110,7 @@ public class PersonalInfoActivity extends AppCompatActivity implements AdapterVi
         Log.println(Log.DEBUG, "TestMember", Integer.toString(yearlyIncome));
         Log.println(Log.DEBUG, "TestMember", Integer.toString(family.getMembers().size()));
 
-/*        boolean result = member.add(getApplicationContext(), family.getMembers().get((family.getMembers().size()-1)));
+        boolean result = member.add(getApplicationContext(), family.getMembers().get((family.getMembers().size()-1)));
 
         if(result == true) {
 
@@ -124,7 +124,7 @@ public class PersonalInfoActivity extends AppCompatActivity implements AdapterVi
 
         Intent intent = new Intent(this, NewProfileActivity.class);
         startActivity(intent);
-*/
+
     }
 
     public void backInvoke() {
