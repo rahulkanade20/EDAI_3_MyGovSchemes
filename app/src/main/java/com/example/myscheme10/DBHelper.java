@@ -23,7 +23,7 @@ public class DBHelper extends SQLiteOpenHelper {
     // The Android's default system path
     // of your application database.
     private static String DB_PATH = "";
-    private static String DB_NAME = "database3.db";
+    private static String DB_NAME = "database4.db";
     private static int DB_VER = 1;
     private SQLiteOpenHelper sqLiteOpenHelper;
 
@@ -136,6 +136,9 @@ public class DBHelper extends SQLiteOpenHelper {
             db.beginTransaction();
 
             String sqlStr = "DELETE FROM Family";
+            String sqlStr1 = "DELETE FROM Members";
+
+            db.execSQL(sqlStr1);
             db.execSQL(sqlStr);
 
             result = (int) db.insertOrThrow("FAMILY", null, contentValues1);
@@ -232,13 +235,69 @@ public class DBHelper extends SQLiteOpenHelper {
             String SQLQuery1 = "SELECT * FROM Members";
             String SQLQuery2 = "SELECT name FROM Members";
 
+
             Cursor result = db.rawQuery(SQLQuery, array);
             Cursor result1 = db.rawQuery(SQLQuery1, array);
-        //    Cursor result2 = db.rawQuery(SQLQuery2, array);
+            //    Cursor result2 = db.rawQuery(SQLQuery2, array);
+            if (result.getCount() != 0) {
 
-            result.moveToFirst();
-            result1.moveToFirst();
-        //    result2.moveToFirst();
+                result.moveToFirst();
+
+                Log.println(Log.DEBUG, "from database", Integer.toString(result.getColumnCount()));
+                Log.println(Log.DEBUG, "from database", Integer.toString(result.getCount()));
+
+                family.setSurname(result.getString(result.getColumnIndex("surname")));
+                //    result.moveToFirst();
+                family.setNoOfMembers(result.getInt(result.getColumnIndex("NoOfMembers")));
+                //    result.moveToFirst();
+                family.setFamilyIncome(result.getInt(result.getColumnIndex("familyIncome")));
+                //    result.moveToFirst();
+                family.setCaste(result.getString(result.getColumnIndex("caste")));
+                //    result.moveToFirst();
+                family.setState(result.getString(result.getColumnIndex("state")));
+                //    result.moveToFirst();
+                family.setCity(result.getString(result.getColumnIndex("city")));
+
+                Log.println(Log.DEBUG, "Test3", "inside insertFamily function");
+                Log.println(Log.DEBUG, "Test3", family.getSurname());
+                Log.println(Log.DEBUG, "Test3", family.getState());
+                Log.println(Log.DEBUG, "Test3", family.getCity());
+                Log.println(Log.DEBUG, "Test3", family.getCaste());
+                Log.println(Log.DEBUG, "Test3", Integer.toString(family.getNoOfMembers()));
+                Log.println(Log.DEBUG, "Test3", Integer.toString(family.getFamilyIncome()));
+
+                if (result1.getCount() != 0) {
+
+                    result1.moveToFirst();
+
+                    Log.println(Log.DEBUG, "from databaseMemb", Integer.toString(result1.getColumnCount()));
+                    Log.println(Log.DEBUG, "from databaseMemb", Integer.toString(result1.getCount()));
+
+                    for (int i = 1; i <= result1.getCount(); i++) {
+
+                        Log.println(Log.DEBUG, "members added", result1.getString(result1.getColumnIndex("name")));
+                        result1.moveToNext();
+                    }
+
+                }
+
+            }
+
+            return family;
+
+        } catch (android.database.SQLException e) {
+
+            e.printStackTrace();
+            Log.println(Log.DEBUG, "Test", e.getMessage());
+
+            return family;
+        } finally {
+
+            db.close();
+        }
+    }
+
+/*        //    result2.moveToFirst();
 
             Log.println(Log.DEBUG, "from database", Integer.toString(result.getColumnCount()));
             Log.println(Log.DEBUG, "from database", Integer.toString(result.getCount()));
@@ -257,6 +316,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 Log.println(Log.DEBUG, "members added", result1.getString(result1.getColumnIndex("name")));
                 result1.moveToNext();
             }
+
 
             family.setSurname(result.getString(result.getColumnIndex("surname")));
         //    result.moveToFirst();
@@ -292,7 +352,7 @@ public class DBHelper extends SQLiteOpenHelper {
             db.close();
         }
     }
-
+*/
     // This method is used to get the
     // algorithm topics from the database.
     /*
