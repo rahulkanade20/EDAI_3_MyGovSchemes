@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -16,6 +18,22 @@ public class PersonalInfoActivity extends AppCompatActivity implements AdapterVi
     private Button save;
 
     private Button btnBack;
+
+    Member member = new Member();
+
+    Family family = new Family();
+
+    EditText nameInput;
+    EditText ageInput;
+    EditText occupationInput;
+    EditText yearlyIncomeInput;
+    Spinner genderInput;
+
+    String name;
+    int age ;
+    String occupation;
+    int yearlyIncome;
+    String gender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +47,14 @@ public class PersonalInfoActivity extends AppCompatActivity implements AdapterVi
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+
+        nameInput = (EditText) findViewById(R.id.editTextTextPersonName8);
+        ageInput = (EditText) findViewById(R.id.editTextNumber3);
+        occupationInput = (EditText) findViewById(R.id.editTextTextPersonName9);
+        yearlyIncomeInput = (EditText) findViewById(R.id.editTextNumber4);
+
+        genderInput = (Spinner) findViewById(R.id.spinner1);
+
 
         save = (Button) findViewById(R.id.save2);
 
@@ -62,8 +88,43 @@ public class PersonalInfoActivity extends AppCompatActivity implements AdapterVi
 
     public void saveInvoke() {
 
+        name = nameInput.getText().toString();
+        occupation = occupationInput.getText().toString();
+        age = Integer.valueOf(ageInput.getText().toString());
+        yearlyIncome = Integer.valueOf(yearlyIncomeInput.getText().toString());
+
+        gender = genderInput.getSelectedItem().toString();
+
+        member.setName(name);
+        member.setAge(age);
+        member.setOccupation(occupation);
+        member.setYearlyIncome(yearlyIncome);
+        member.setGender(gender);
+
+        family.addMember(member);
+
+        Log.println(Log.DEBUG, "TestMember", name);
+        Log.println(Log.DEBUG, "TestMember", occupation);
+        Log.println(Log.DEBUG, "TestMember", gender);
+        Log.println(Log.DEBUG, "TestMember", Integer.toString(age));
+        Log.println(Log.DEBUG, "TestMember", Integer.toString(yearlyIncome));
+        Log.println(Log.DEBUG, "TestMember", Integer.toString(family.getMembers().size()));
+
+/*        boolean result = member.add(getApplicationContext(), family.getMembers().get((family.getMembers().size()-1)));
+
+        if(result == true) {
+
+            Log.println(Log.DEBUG, "TestMember", "member.add returning true");
+        }
+
+        else {
+
+            Log.println(Log.DEBUG, "TestMember", "member.add returning false");
+        }
+
         Intent intent = new Intent(this, NewProfileActivity.class);
         startActivity(intent);
+*/
     }
 
     public void backInvoke() {

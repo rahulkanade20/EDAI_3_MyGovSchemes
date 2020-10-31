@@ -3,6 +3,7 @@ package com.example.myscheme10;
 import android.content.Context;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Family {
@@ -14,7 +15,7 @@ public class Family {
     private String caste;
     private int familyIncome;
 
-    List<Member> members;
+    static List<Member> members = new ArrayList<>();
 
     public void setSurname(String surname) {
         this.surname = surname;
@@ -74,8 +75,9 @@ public class Family {
     }
 
 
-    public boolean addMember() {
+    public boolean addMember(Member member) {
 
+        members.add(member);
         return true;
     }
 

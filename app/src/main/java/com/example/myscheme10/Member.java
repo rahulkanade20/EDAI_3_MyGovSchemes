@@ -1,5 +1,8 @@
 package com.example.myscheme10;
 
+import android.content.Context;
+import android.util.Log;
+
 import java.util.List;
 
 public class Member {
@@ -52,9 +55,34 @@ public class Member {
     }
 
 
-    public boolean add() {
+    public boolean add(Context context, Member member) {
+/*
+        try {
+            DBHelper dbh = new DBHelper(context);
 
+        //    Log.println(Log.DEBUG, "Inside save of family",);
+
+
+            boolean insert = dbh.insertMember(member.getName(), member.getOccupation(), member.getGender(), member.getAge(), member.getYearlyIncome());
+            if (insert == true) {
+                Log.println(Log.DEBUG, "Test", "inserted successfully");
+            } else {
+                Log.println(Log.DEBUG, "Test", "insertion unsuccessful");
+            }
+
+            return insert;
+        }
+        catch( Exception e)
+        {
+            Log.println(Log.DEBUG, "Test", e.getMessage());
+            return false;
+        }
+        finally{
+
+        }
+*/
         return true;
+
     }
 
     public List<String> getRecommendations() {

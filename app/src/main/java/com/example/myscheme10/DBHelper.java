@@ -23,8 +23,8 @@ public class DBHelper extends SQLiteOpenHelper {
     // The Android's default system path
     // of your application database.
     private static String DB_PATH = "";
-    private static String DB_NAME = "database2.db";
-    private static int DB_VER = 3;
+    private static String DB_NAME = "database3.db";
+    private static int DB_VER = 1;
     private SQLiteOpenHelper sqLiteOpenHelper;
 
     String[] array = {};
@@ -49,11 +49,15 @@ public class DBHelper extends SQLiteOpenHelper {
         try {
             Log.println(Log.DEBUG, "Testsql", "inside DB Create");
             String sqlstr = "CREATE TABLE " + "FAMILY " + " ( " + "family_id INTEGER NOT NULL, " + "surname TEXT NOT NULL, " + "NoOfMembers INTEGER NOT NULL, " + "state TEXT NOT NULL, " + "city TEXT NOT NULL, " + "familyIncome INTEGER NOT NULL, " + "caste TEXT NOT NULL )";
+            String sqlstr1 = "CREATE TABLE " + "MEMBERS " + " ( " + "family_id INTEGER NOT NULL, " + "name TEXT NOT NULL, " + "occupation TEXT NOT NULL, " + "gender TEXT NOT NULL, " + "age INTEGER NOT NULL, " + "yearlyIncome INTEGER NOT NULL )";
 
             Log.println(Log.DEBUG, "sqlquery", sqlstr);
+            Log.println(Log.DEBUG, "sqlquery1", sqlstr1);
 
 
             db.execSQL(sqlstr);
+            db.execSQL(sqlstr1);
+
 
             Log.println(Log.DEBUG, "Testsql", sqlstr);
             Log.println(Log.DEBUG, "Testsql", " DB Created successfully.");
@@ -161,7 +165,62 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
     }
+/*
+    public boolean insertMember(String name, String occupation, String gender, int age, int yearlyIncome) {
 
+        Log.println(Log.DEBUG, "TestMember1", "inside insertMember function");
+        Log.println(Log.DEBUG, "TestMember1", name);
+        Log.println(Log.DEBUG, "TestMember1", occupation);
+        Log.println(Log.DEBUG, "TestMember1", gender);
+    //    Log.println(Log.DEBUG, "Test1", caste);
+        Log.println(Log.DEBUG, "TestMember1", Integer.toString(age));
+        Log.println(Log.DEBUG, "TestMember1", Integer.toString(yearlyIncome));
+
+        int result = 0;
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        try
+        {
+            ContentValues contentValues1 = new ContentValues();
+
+            contentValues1.put("family_id", 1);
+            contentValues1.put("name", name);
+            contentValues1.put("occupation", occupation);
+            contentValues1.put("gender", gender);
+            contentValues1.put("age", age);
+            contentValues1.put("yearlyIncome", yearlyIncome);
+
+
+            db.beginTransaction();
+
+            result = (int) db.insertOrThrow("MEMBERS", null, contentValues1);
+            //    Log.println(Log.DEBUG, "TestResult", Integer.toString(result));
+
+            db.setTransactionSuccessful();
+            if(result <= 0) {
+
+                Log.println(Log.DEBUG, "Test", Integer.toString(result));
+                return false;
+            }
+
+            else {
+
+                Log.println(Log.DEBUG, "Test", "returning true from insert member function");
+                return true;
+            }
+
+        } catch (android.database.SQLException e) {
+            e.printStackTrace();
+            Log.println(Log.DEBUG, "Test", e.getMessage());
+            return false;
+        }
+        finally {
+            db.endTransaction();
+            db.close();
+        }
+
+    }
+*/
     public Family getFamily() {
 
         Family family = new Family();
@@ -170,14 +229,19 @@ public class DBHelper extends SQLiteOpenHelper {
 
         try {
             String SQLQuery = "SELECT * FROM Family";
+            String SQLQuery1 = "SELECT * FROM Members";
 
             Cursor result = db.rawQuery(SQLQuery, array);
+            Cursor result1 = db.rawQuery(SQLQuery1, array);
 
             result.moveToFirst();
+            result1.moveToFirst();
 
             Log.println(Log.DEBUG, "from database", Integer.toString(result.getColumnCount()));
             Log.println(Log.DEBUG, "from database", Integer.toString(result.getCount()));
 
+            Log.println(Log.DEBUG, "from databaseMemb", Integer.toString(result1.getColumnCount()));
+            Log.println(Log.DEBUG, "from databaseMemb", Integer.toString(result1.getCount()));
 
             family.setSurname(result.getString(result.getColumnIndex("surname")));
         //    result.moveToFirst();

@@ -107,6 +107,8 @@ public class NewProfileActivity extends AppCompatActivity {
         casteInput.setText(family1_.getCaste());
 
         famIncomeInput.setText(Integer.toString(family1_.getFamilyIncome()));
+
+
     }
 
     public void backInvoke() {
