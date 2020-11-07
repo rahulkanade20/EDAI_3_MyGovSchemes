@@ -23,8 +23,8 @@ public class DBHelper extends SQLiteOpenHelper {
     // The Android's default system path
     // of your application database.
     private static String DB_PATH = "";
-    private static String DB_NAME = "database4.db";
-    private static int DB_VER = 1;
+    private static String DB_NAME = "database5.db";
+    private static int DB_VER = 2;
     private SQLiteOpenHelper sqLiteOpenHelper;
 
     String[] array = {};
@@ -46,27 +46,77 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db)
     {
+        int result = 0;
+
         try {
             Log.println(Log.DEBUG, "Testsql", "inside DB Create");
             String sqlstr = "CREATE TABLE " + "FAMILY " + " ( " + "family_id INTEGER NOT NULL, " + "surname TEXT NOT NULL, " + "NoOfMembers INTEGER NOT NULL, " + "state TEXT NOT NULL, " + "city TEXT NOT NULL, " + "familyIncome INTEGER NOT NULL, " + "caste TEXT NOT NULL )";
             String sqlstr1 = "CREATE TABLE " + "MEMBERS " + " ( " + "family_id INTEGER NOT NULL, " + "name TEXT NOT NULL, " + "occupation TEXT NOT NULL, " + "gender TEXT NOT NULL, " + "age INTEGER NOT NULL, " + "yearlyIncome INTEGER NOT NULL )";
+            String sqlstr2 = "CREATE TABLE " + "SCHEMES " + " ( " + "scheme_id INTEGER NOT NULL, " + "gender TEXT NOT NULL, " + "age TEXT NOT NULL, " + "occupation TEXT NOT NULL, " + "caste TEXT NOT NULL, " + "centreorstate TEXT NOT NULL, " + "income TEXT NOT NULL, " + "description TEXT NOT NULL, " + "link TEXT NOT NULL )";
 
             Log.println(Log.DEBUG, "sqlquery", sqlstr);
             Log.println(Log.DEBUG, "sqlquery1", sqlstr1);
+            Log.println(Log.DEBUG, "sqlquery1", sqlstr2);
 
 
             db.execSQL(sqlstr);
             db.execSQL(sqlstr1);
+            db.execSQL(sqlstr2);
 
 
             Log.println(Log.DEBUG, "Testsql", sqlstr);
             Log.println(Log.DEBUG, "Testsql", " DB Created successfully.");
+
         }catch (Exception e){
             Log.println(Log.DEBUG,"Testsql", e.getMessage());
             Log.println(Log.DEBUG, "Testsql", "DB Creation failed.");
             throw e;
         }finally {
             //should we close DB connection
+        }
+
+    //    SQLiteDatabase db1 = this.getWritableDatabase();
+
+        try
+        {
+            ContentValues contentValues1 = new ContentValues();
+
+            contentValues1.put("scheme_id", 1);
+            contentValues1.put("gender", "Female");
+            contentValues1.put("age", "age<=10");
+            contentValues1.put("occupation", "NA");
+            contentValues1.put("caste", "NA");
+            contentValues1.put("centreorstate", "centre");
+            contentValues1.put("income", "NA");
+            contentValues1.put("description", "scheme for girls");
+            contentValues1.put("link", "http://nsiindia.gov.in/InternalPage.aspx?Id_Pk=89");
+
+            db.beginTransaction();
+
+            result = (int) db.insertOrThrow("SCHEMES", null, contentValues1);
+            //    Log.println(Log.DEBUG, "TestResult", Integer.toString(result));
+
+            db.setTransactionSuccessful();
+            if(result <= 0) {
+
+                Log.println(Log.DEBUG, "Test", Integer.toString(result));
+
+            }
+
+            else {
+
+                Log.println(Log.DEBUG, "Test", "returning true from insert member function");
+
+            }
+
+        } catch (android.database.SQLException e) {
+            e.printStackTrace();
+            Log.println(Log.DEBUG, "Test", e.getMessage());
+
+        }
+        finally {
+            db.endTransaction();
+        //    db.close();
         }
 
 
@@ -94,8 +144,13 @@ public class DBHelper extends SQLiteOpenHelper {
             Log.println(Log.DEBUG,"Testsql", "inside onUpgrade");
 
             String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS Family";
+            String SQL_DELETE_ENTRIES1 = "DROP TABLE IF EXISTS Members";
+            String SQL_DELETE_ENTRIES2 = "DROP TABLE IF EXISTS Schemes";
 
             db.execSQL(SQL_DELETE_ENTRIES);
+            db.execSQL(SQL_DELETE_ENTRIES1);
+            db.execSQL(SQL_DELETE_ENTRIES2);
+
             Log.println(Log.DEBUG,"Testsql", "Dropped existing tables successfully.");
 
             onCreate(db);
@@ -234,10 +289,12 @@ public class DBHelper extends SQLiteOpenHelper {
             String SQLQuery = "SELECT * FROM Family";
             String SQLQuery1 = "SELECT * FROM Members";
             String SQLQuery2 = "SELECT name FROM Members";
+            String SQLQuery3 = "SELECT * FROM Schemes";
 
 
             Cursor result = db.rawQuery(SQLQuery, array);
             Cursor result1 = db.rawQuery(SQLQuery1, array);
+            Cursor result_scheme = db.rawQuery(SQLQuery3, array);
             //    Cursor result2 = db.rawQuery(SQLQuery2, array);
             if (result.getCount() != 0) {
 
@@ -245,6 +302,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
                 Log.println(Log.DEBUG, "from database", Integer.toString(result.getColumnCount()));
                 Log.println(Log.DEBUG, "from database", Integer.toString(result.getCount()));
+
+                Log.println(Log.DEBUG, "from scheme table", Integer.toString(result_scheme.getColumnCount()));
+                Log.println(Log.DEBUG, "from scheme table", Integer.toString(result_scheme.getCount()));
 
                 family.setSurname(result.getString(result.getColumnIndex("surname")));
                 //    result.moveToFirst();
