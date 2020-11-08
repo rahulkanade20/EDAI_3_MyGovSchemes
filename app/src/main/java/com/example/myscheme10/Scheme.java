@@ -1,6 +1,7 @@
 package com.example.myscheme10;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Scheme {
 
@@ -13,6 +14,16 @@ public class Scheme {
     private String income;
     private String description;
     private String link;
+
+    private static List<Scheme> listOfSchemes = new ArrayList<Scheme>();
+
+    public static List<Scheme> getListOfSchemes() {
+        return listOfSchemes;
+    }
+
+    public void setListOfSchemes(List<Scheme> listOfSchemes) {
+        this.listOfSchemes = listOfSchemes;
+    }
 
     public String getAge() {
         return age;
@@ -86,7 +97,11 @@ public class Scheme {
         this.caste = caste;
     }
 
+    public static boolean addScheme(Scheme scheme) {
 
+        listOfSchemes.add(scheme);
+        return true;
+    }
 
 }
 

@@ -23,8 +23,8 @@ public class DBHelper extends SQLiteOpenHelper {
     // The Android's default system path
     // of your application database.
     private static String DB_PATH = "";
-    private static String DB_NAME = "database5.db";
-    private static int DB_VER = 2;
+    private static String DB_NAME = "database8.db";
+    private static int DB_VER = 1;
     private SQLiteOpenHelper sqLiteOpenHelper;
 
     String[] array = {};
@@ -283,6 +283,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         Family family = new Family();
 
+        Member member = new Member();
+
         SQLiteDatabase db = this.getReadableDatabase();
 
         try {
@@ -336,7 +338,16 @@ public class DBHelper extends SQLiteOpenHelper {
                     for (int i = 1; i <= result1.getCount(); i++) {
 
                         Log.println(Log.DEBUG, "members added", result1.getString(result1.getColumnIndex("name")));
+                    /*
+                        member.setName(result1.getString(result1.getColumnIndex("name")));
+                        member.setGender(result1.getString(result1.getColumnIndex("gender")));
+                        member.setOccupation(result1.getString(result1.getColumnIndex("occupation")));
+                        member.setAge(result1.getInt(result1.getColumnIndex("age")));
+                        member.setYearlyIncome(result1.getInt(result1.getColumnIndex("yearlyIncome")));
+                        family.addMember(member);
                         result1.moveToNext();
+
+                     */
                     }
 
                 }
@@ -356,7 +367,55 @@ public class DBHelper extends SQLiteOpenHelper {
             db.close();
         }
     }
+/*
+    public Scheme getSchemes() {
 
+        Scheme schemeObj = new Scheme();
+
+        String SQLQuery = "SELECT * FROM Schemes";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        try {
+
+            Cursor result = db.rawQuery(SQLQuery, array);
+
+            if (result.getCount() != 0) {
+
+                result.moveToFirst();
+
+                for (int i = 1; i <= result.getCount(); i++) {
+
+                    schemeObj.setScheme_id(result.getInt(result.getColumnIndex("scheme_id")));
+                    schemeObj.setAge(result.getString(result.getColumnIndex("age")));
+                    schemeObj.setCaste(result.getString(result.getColumnIndex("caste")));
+                    schemeObj.setGender(result.getString(result.getColumnIndex("gender")));
+                    schemeObj.setOccupation(result.getString(result.getColumnIndex("occupation")));
+                    schemeObj.setIncome(result.getString(result.getColumnIndex("income")));
+                    schemeObj.setCentreOrState(result.getString(result.getColumnIndex("centreorstate")));
+                    schemeObj.setDescription(result.getString(result.getColumnIndex("description")));
+                    schemeObj.setLink(result.getString(result.getColumnIndex("link")));
+
+                    schemeObj.addScheme(schemeObj);
+
+                }
+            }
+
+            return schemeObj;
+
+        } catch (android.database.SQLException e) {
+
+            e.printStackTrace();
+            Log.println(Log.DEBUG, "Test", e.getMessage());
+
+            return schemeObj;
+
+        } finally {
+
+            db.close();
+        }
+    }
+*/
 /*        //    result2.moveToFirst();
 
             Log.println(Log.DEBUG, "from database", Integer.toString(result.getColumnCount()));

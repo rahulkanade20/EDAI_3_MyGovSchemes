@@ -3,9 +3,15 @@ package com.example.myscheme10;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         recommend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                refreshInvoke();
+                recommendInvoke();
             }
         });
 
@@ -83,7 +89,41 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void recommendInvoke() {
+/*
+        schemeEvaluation evaluation = new schemeEvaluation();
+
+        Family family = new Family();
+
+        List<Boolean> result = new ArrayList<Boolean>();
+
+        schemeEvaluation evaluator = new schemeEvaluation();
+
+    //    Scheme scheme = new Scheme();
+
+        DBHelper db = new DBHelper(getApplicationContext());
+
+        family = db.getFamily();
+
+        for(int i=0; i<family.getMembers().size(); i++) {
+
+            Log.println(Log.DEBUG, "recommendation", String.valueOf(family.getMembers().get(i).getMySchemes().get(0)));
+        }
+
+        for(int i = 0; i<family.getMembers().size(); i++) {
+
+            for(int j = 0; j<Scheme.getListOfSchemes().size(); j++) {
+
+                result = evaluator.Evaluator(family, family.getMembers().get(i), Scheme.getListOfSchemes().get(j));
+
+                if(result.size() == 5) {
+
+                    family.getMembers().get(i).addToMySchemes(Scheme.getListOfSchemes().get(j).getScheme_id());
+                }
+            }
+
+        }
 
 
+*/
     }
 }

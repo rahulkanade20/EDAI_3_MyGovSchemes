@@ -3,6 +3,7 @@ package com.example.myscheme10;
 import android.content.Context;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Member {
@@ -12,6 +13,16 @@ public class Member {
     private String occupation;
     private int yearlyIncome;
     private String gender;
+
+    List<Integer> mySchemes = new ArrayList<Integer>();
+
+    public List<Integer> getMySchemes() {
+        return mySchemes;
+    }
+
+    public void setMySchemes(List<Integer> mySchemes) {
+        this.mySchemes = mySchemes;
+    }
 
     public String getName() {
         return name;
@@ -52,6 +63,12 @@ public class Member {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public boolean addToMySchemes(int scheme_id) {
+
+        mySchemes.add(scheme_id);
+        return true;
     }
 
 

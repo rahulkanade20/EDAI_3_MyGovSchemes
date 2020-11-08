@@ -15,7 +15,7 @@ public class Family {
     private String caste;
     private int familyIncome;
 
-    static List<Member> members = new ArrayList<>();
+    List<Member> members = new ArrayList<>();
 
     public void setSurname(String surname) {
         this.surname = surname;
@@ -78,6 +78,7 @@ public class Family {
     public boolean addMember(Member member) {
 
         members.add(member);
+        Log.println(Log.DEBUG, "addMember", "inside addMember of family class");
         return true;
     }
 
