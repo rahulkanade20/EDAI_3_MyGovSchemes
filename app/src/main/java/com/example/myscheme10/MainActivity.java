@@ -104,12 +104,19 @@ public class MainActivity extends AppCompatActivity {
 
         family = db.getFamily();
 
+        db.getSchemes();
+
         Log.println(Log.DEBUG, "recommendation", "inside recommendation");
 
 
         for(int i=0; i<family.getMembers().size(); i++) {
 
             Log.println(Log.DEBUG, "recommendation", String.valueOf(family.getMembers().get(i).getName()));//.getMySchemes().get(0)));
+        }
+
+        for(int i=0; i<Scheme.getListOfSchemes().size(); i++) {
+
+            Log.println(Log.DEBUG, "recommendation", String.valueOf(Scheme.getListOfSchemes().get(i).getDescription()));//.getMySchemes().get(0)));
         }
 /*
         for(int i = 0; i<family.getMembers().size(); i++) {

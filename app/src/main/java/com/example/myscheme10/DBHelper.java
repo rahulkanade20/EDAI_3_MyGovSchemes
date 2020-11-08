@@ -370,9 +370,9 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Scheme getSchemes() {
+    public void getSchemes() {
 
-        Scheme schemeObj = new Scheme();
+    //    Scheme schemeObj = new Scheme();
 
         String SQLQuery = "SELECT * FROM Schemes";
 
@@ -387,6 +387,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 result.moveToFirst();
 
                 for (int i = 1; i <= result.getCount(); i++) {
+
+                    Scheme schemeObj = new Scheme();
 
                     schemeObj.setScheme_id(result.getInt(result.getColumnIndex("scheme_id")));
                     schemeObj.setAge(result.getString(result.getColumnIndex("age")));
@@ -403,14 +405,14 @@ public class DBHelper extends SQLiteOpenHelper {
                 }
             }
 
-            return schemeObj;
+        //    return schemeObj;
 
         } catch (android.database.SQLException e) {
 
             e.printStackTrace();
             Log.println(Log.DEBUG, "Test", e.getMessage());
 
-            return schemeObj;
+        //    return schemeObj;
 
         } finally {
 
