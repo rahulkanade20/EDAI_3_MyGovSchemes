@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void recommendInvoke() {
-/*
+
         schemeEvaluation evaluation = new schemeEvaluation();
 
         Family family = new Family();
@@ -104,11 +104,14 @@ public class MainActivity extends AppCompatActivity {
 
         family = db.getFamily();
 
+        Log.println(Log.DEBUG, "recommendation", "inside recommendation");
+
+
         for(int i=0; i<family.getMembers().size(); i++) {
 
-            Log.println(Log.DEBUG, "recommendation", String.valueOf(family.getMembers().get(i).getMySchemes().get(0)));
+            Log.println(Log.DEBUG, "recommendation", String.valueOf(family.getMembers().get(i).getName()));//.getMySchemes().get(0)));
         }
-
+/*
         for(int i = 0; i<family.getMembers().size(); i++) {
 
             for(int j = 0; j<Scheme.getListOfSchemes().size(); j++) {

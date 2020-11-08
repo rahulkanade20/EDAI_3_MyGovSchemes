@@ -283,7 +283,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         Family family = new Family();
 
-        Member member = new Member();
+     //   Member member = new Member();
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -337,6 +337,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
                     for (int i = 1; i <= result1.getCount(); i++) {
 
+                        Member member = new Member();
+
                         Log.println(Log.DEBUG, "members added", result1.getString(result1.getColumnIndex("name")));
 
                         member.setName(result1.getString(result1.getColumnIndex("name")));
@@ -367,7 +369,7 @@ public class DBHelper extends SQLiteOpenHelper {
             db.close();
         }
     }
-/*
+
     public Scheme getSchemes() {
 
         Scheme schemeObj = new Scheme();
@@ -396,7 +398,7 @@ public class DBHelper extends SQLiteOpenHelper {
                     schemeObj.setDescription(result.getString(result.getColumnIndex("description")));
                     schemeObj.setLink(result.getString(result.getColumnIndex("link")));
 
-                    schemeObj.addScheme(schemeObj);
+                    Scheme.addScheme(schemeObj);
 
                 }
             }
@@ -415,7 +417,7 @@ public class DBHelper extends SQLiteOpenHelper {
             db.close();
         }
     }
-*/
+
 /*        //    result2.moveToFirst();
 
             Log.println(Log.DEBUG, "from database", Integer.toString(result.getColumnCount()));
