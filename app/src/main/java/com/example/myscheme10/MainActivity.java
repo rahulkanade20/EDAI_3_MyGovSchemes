@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
         Family family = new Family();
 
-        List<Boolean> result = new ArrayList<Boolean>();
+    //    List<Boolean> result = new ArrayList<Boolean>();
 
         schemeEvaluation evaluator = new schemeEvaluation();
 
@@ -111,29 +111,59 @@ public class MainActivity extends AppCompatActivity {
 
         for(int i=0; i<family.getMembers().size(); i++) {
 
-            Log.println(Log.DEBUG, "recommendation", String.valueOf(family.getMembers().get(i).getName()));//.getMySchemes().get(0)));
+            Log.println(Log.DEBUG, "recommendation", String.valueOf(family.getMembers().get(i).getAge()));//.getMySchemes().get(0)));
         }
 
         for(int i=0; i<Scheme.getListOfSchemes().size(); i++) {
 
             Log.println(Log.DEBUG, "recommendation", String.valueOf(Scheme.getListOfSchemes().get(i).getDescription()));//.getMySchemes().get(0)));
         }
-/*
+
+        Log.println(Log.DEBUG, "recommendation_size", String.valueOf(family.getMembers().size()));//.getMySchemes().get(0)));
+
         for(int i = 0; i<family.getMembers().size(); i++) {
 
             for(int j = 0; j<Scheme.getListOfSchemes().size(); j++) {
+
+                List<Boolean> result = new ArrayList<Boolean>();
 
                 result = evaluator.Evaluator(family, family.getMembers().get(i), Scheme.getListOfSchemes().get(j));
 
                 if(result.size() == 5) {
 
+                    Log.println(Log.DEBUG, "recommendation_s", String.valueOf(family.getMembers().get(i).getName()));//.getMySchemes().get(0)));
+
                     family.getMembers().get(i).addToMySchemes(Scheme.getListOfSchemes().get(j).getScheme_id());
                 }
+
+                //else {
+
+                 //   family.getMembers().get(i).addToMySchemes(0);
+
+                //}
             }
 
         }
 
+        Log.println(Log.DEBUG, "recommendation_size1", String.valueOf(family.getMembers().size()));//.getMySchemes().get(0)));
 
-*/
+
+        for(int i=0; i<family.getMembers().size(); i++) {
+
+            Log.println(Log.DEBUG, "recommendation_insFor", String.valueOf(i));//.getMySchemes().get(0)));
+
+            for(int j=0; j<family.getMembers().get(i).getMySchemes().size(); j++) {
+
+                Log.println(Log.DEBUG, "recommendation1", String.valueOf(family.getMembers().get(i).getMySchemes().size()));
+
+                Log.println(Log.DEBUG, "recommendation_ins_iFor", String.valueOf(family.getMembers().get(i).getMySchemes().get(j)));//.getMySchemes().get(0)));
+
+            }
+
+        //    Log.println(Log.DEBUG, "recommendation1", String.valueOf(family.getMembers().get(i).getMySchemes().size()));//.getMySchemes().get(0)));
+        }
+
+
+
     }
 }
