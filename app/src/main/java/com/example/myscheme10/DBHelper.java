@@ -338,7 +338,7 @@ public class DBHelper extends SQLiteOpenHelper {
                     for (int i = 1; i <= result1.getCount(); i++) {
 
                         Log.println(Log.DEBUG, "members added", result1.getString(result1.getColumnIndex("name")));
-                    /*
+
                         member.setName(result1.getString(result1.getColumnIndex("name")));
                         member.setGender(result1.getString(result1.getColumnIndex("gender")));
                         member.setOccupation(result1.getString(result1.getColumnIndex("occupation")));
@@ -347,7 +347,7 @@ public class DBHelper extends SQLiteOpenHelper {
                         family.addMember(member);
                         result1.moveToNext();
 
-                     */
+
                     }
 
                 }
