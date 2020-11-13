@@ -14,13 +14,14 @@ public class Member {
     private int yearlyIncome;
     private String gender;
 
-    List<Integer> mySchemes = new ArrayList<Integer>();
+    List<Scheme> mySchemes = new ArrayList<Scheme>();
 
-    public List<Integer> getMySchemes() {
+
+    public List<Scheme> getMySchemes() {
         return mySchemes;
     }
 
-    public void setMySchemes(List<Integer> mySchemes) {
+    public void setMySchemes(List<Scheme> mySchemes) {
         this.mySchemes = mySchemes;
     }
 
@@ -65,9 +66,9 @@ public class Member {
         this.gender = gender;
     }
 
-    public boolean addToMySchemes(int scheme_id) {
+    public boolean addToMySchemes(Scheme scheme) {
 
-        mySchemes.add(scheme_id);
+        mySchemes.add(scheme);
         return true;
     }
 
@@ -97,7 +98,6 @@ public class Member {
         finally{
 
         }
-
 
     }
 

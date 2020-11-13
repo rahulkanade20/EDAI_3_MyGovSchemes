@@ -133,7 +133,10 @@ public class MainActivity extends AppCompatActivity {
 
                     Log.println(Log.DEBUG, "recommendation_s", String.valueOf(family.getMembers().get(i).getName()));//.getMySchemes().get(0)));
 
-                    family.getMembers().get(i).addToMySchemes(Scheme.getListOfSchemes().get(j).getScheme_id());
+                    family.getMembers().get(i).addToMySchemes(Scheme.getListOfSchemes().get(j));
+
+                    Log.println(Log.DEBUG, "recommendation_s", String.valueOf(family.getMembers().get(i).getMySchemes().get(0).getDescription()));//.getMySchemes().get(0)));
+
                 }
 
                 //else {
