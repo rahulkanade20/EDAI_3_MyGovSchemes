@@ -17,9 +17,9 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginBottom="136dp"
-            android:background="#000"
+            android:background="#ffffff"
             android:padding="10dp"
-            android:textColor="#00f"
+            android:textColor="#607d8b"
             android:textSize="25sp"
             android:textStyle="bold|italic"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -28,6 +28,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button3"
             app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BACK"
+            />
 
 
     </LinearLayout>

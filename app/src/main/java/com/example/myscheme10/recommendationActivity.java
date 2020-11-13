@@ -13,13 +13,30 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.widget.Button;
+
+
 
 public class recommendationActivity extends AppCompatActivity {
+
+    private Button btnBack;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recommendation);
+
+        btnBack = (Button) findViewById(R.id.btnBack);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                backInvoke();
+            }
+
+
+        });
 
         String recommendationString = "";
 
@@ -83,18 +100,19 @@ public class recommendationActivity extends AppCompatActivity {
 
         Log.println(Log.DEBUG, "recommendation_size1", String.valueOf(family.getMembers().size()));//.getMySchemes().get(0)));
 
+        int j = 0;
 
         for(int i=0; i<family.getMembers().size(); i++) {
 
-            recommendationString =  recommendationString + family.getMembers().get(i).getName() + "\n";
+            recommendationString =  recommendationString +  "Schemes for " + family.getMembers().get(i).getName() + ":" + "\n";
 
             Log.println(Log.DEBUG, "recommendation_insFor", String.valueOf(i));//.getMySchemes().get(0)));
 
-            for(int j=0; j<family.getMembers().get(i).getMySchemes().size(); j++) {
+            for(j=0; j<family.getMembers().get(i).getMySchemes().size(); j++) {
 
-                recommendationString = recommendationString + family.getMembers().get(i).getMySchemes().get(j).getDescription() + "\n";
+                recommendationString = recommendationString + String.valueOf(j+1) + ") " + family.getMembers().get(i).getMySchemes().get(j).getDescription() + "\n";
 
-                recommendationString = recommendationString + family.getMembers().get(i).getMySchemes().get(j).getLink() + "\n";
+                recommendationString = recommendationString + "Link" + " ---> " + family.getMembers().get(i).getMySchemes().get(j).getLink() + "\n";
 
                 Log.println(Log.DEBUG, "recommendation1", String.valueOf(family.getMembers().get(i).getMySchemes().size()));
 
@@ -102,7 +120,12 @@ public class recommendationActivity extends AppCompatActivity {
 
             }
 
-            recommendationString = recommendationString + "**************************************************************************************" + "\n";
+            if(j==0) {
+
+                recommendationString = recommendationString + "no schemes found." + "\n";
+            }
+
+            recommendationString = recommendationString + "********************************" + "\n";
 
 
             //    Log.println(Log.DEBUG, "recommendation1", String.valueOf(family.getMembers().get(i).getMySchemes().size()));//.getMySchemes().get(0)));
@@ -137,6 +160,13 @@ public class recommendationActivity extends AppCompatActivity {
 */
 
 
+
+    }
+
+    public void backInvoke() {
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
 
     }
 }

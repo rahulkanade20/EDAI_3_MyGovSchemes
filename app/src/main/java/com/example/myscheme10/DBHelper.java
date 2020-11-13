@@ -88,7 +88,7 @@ public class DBHelper extends SQLiteOpenHelper {
             contentValues1.put("caste", "NA");
             contentValues1.put("centreorstate", "centre");
             contentValues1.put("income", "NA");
-            contentValues1.put("description", "scheme for girls");
+            contentValues1.put("description", "Sukanya Samriddhi Scheme");
             contentValues1.put("link", "http://nsiindia.gov.in/InternalPage.aspx?Id_Pk=89");
 
             db.beginTransaction();
