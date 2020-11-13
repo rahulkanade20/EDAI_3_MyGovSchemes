@@ -9,101 +9,29 @@ import android.view.View;
 import android.widget.Button;
 
 import android.util.Log;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
-
-    private Button btnProfile;
-
-    private Button refresh;
-
-    private Button recommend;
-
-    public static Family family = new Family();
-
-    DBHelper db;
-
+public class recommendationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_recommendation);
 
-        btnProfile = (Button) findViewById(R.id.btnProfile);
+        String recommendationString = "";
 
-        btnProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                profileInvoke();
-            }
-        });
-
-        refresh = (Button) findViewById(R.id.button2);
-
-        refresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                refreshInvoke();
-            }
-        });
-
-        recommend = (Button) findViewById(R.id.button3);
-
-        recommend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                recommendInvoke();
-            }
-        });
-
-        db = new DBHelper(this);
-    /*
-        try {
-            db.createDataBase();
-            db.openDataBase();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-    */
-    }
-
-    @Override
-    protected void onDestroy() {
-     //   db.close();
-        super.onDestroy();
-    }
-
-    public void profileInvoke() {
-
-        Intent intent = new Intent(this, NewProfileActivity.class);
-        startActivity(intent);
-
-    }
-
-    public void refreshInvoke() {
-
-
-    }
-
-    public void recommendInvoke() {
-
-        Intent intent = new Intent(this, recommendationActivity.class);
-        startActivity(intent);
-
-    }
-/*
         schemeEvaluation evaluation = new schemeEvaluation();
 
         Family family = new Family();
 
-    //    List<Boolean> result = new ArrayList<Boolean>();
+        //    List<Boolean> result = new ArrayList<Boolean>();
 
         schemeEvaluation evaluator = new schemeEvaluation();
 
-    //    Scheme scheme = new Scheme();
+        //    Scheme scheme = new Scheme();
 
         DBHelper db = new DBHelper(getApplicationContext());
 
@@ -146,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //else {
 
-                 //   family.getMembers().get(i).addToMySchemes(0);
+                //   family.getMembers().get(i).addToMySchemes(0);
 
                 //}
             }
@@ -158,9 +86,15 @@ public class MainActivity extends AppCompatActivity {
 
         for(int i=0; i<family.getMembers().size(); i++) {
 
+            recommendationString =  recommendationString + family.getMembers().get(i).getName() + "\n";
+
             Log.println(Log.DEBUG, "recommendation_insFor", String.valueOf(i));//.getMySchemes().get(0)));
 
             for(int j=0; j<family.getMembers().get(i).getMySchemes().size(); j++) {
+
+                recommendationString = recommendationString + family.getMembers().get(i).getMySchemes().get(j).getDescription() + "\n";
+
+                recommendationString = recommendationString + family.getMembers().get(i).getMySchemes().get(j).getLink() + "\n";
 
                 Log.println(Log.DEBUG, "recommendation1", String.valueOf(family.getMembers().get(i).getMySchemes().size()));
 
@@ -168,12 +102,41 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-        //    Log.println(Log.DEBUG, "recommendation1", String.valueOf(family.getMembers().get(i).getMySchemes().size()));//.getMySchemes().get(0)));
+            recommendationString = recommendationString + "**************************************************************************************" + "\n";
+
+
+            //    Log.println(Log.DEBUG, "recommendation1", String.valueOf(family.getMembers().get(i).getMySchemes().size()));//.getMySchemes().get(0)));
         }
+
+        Log.println(Log.DEBUG, "recommendationString", recommendationString);//.getMySchemes().get(0)));
+
+        TextView textView = (TextView) findViewById(R.id.textView2);
+        textView.setText(recommendationString);
+/*
+        for(int i=0; i<family.getMembers().size(); i++) {
+
+            recommendationString =  recommendationString + family.getMembers().get(i).getName() + "\n";
+
+            for(int j=0; j<family.getMembers().get(i).getMySchemes().size(); j++) {
+
+                recommendationString = recommendationString + family.getMembers().get(i).getMySchemes().get(j).getDescription() + "\n";
+
+                recommendationString = recommendationString + family.getMembers().get(i).getMySchemes().get(j).getLink() + "\n";
+            }
+
+            recommendationString = "**************************************************************************************" + "\n";
+
+
+        }
+
+        Log.println(Log.DEBUG, "recommendationString", recommendationString);//.getMySchemes().get(0)));
+
+        TextView textView = (TextView) findViewById(R.id.textView2);
+        textView.setText(recommendationString);
+
+*/
 
 
 
     }
-
- */
 }
