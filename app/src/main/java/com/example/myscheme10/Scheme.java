@@ -14,6 +14,15 @@ public class Scheme {
     private String income;
     private String description;
     private String link;
+    private String famIncome;
+
+    public String getFamIncome() {
+        return famIncome;
+    }
+
+    public void setFamIncome(String famIncome) {
+        this.famIncome = famIncome;
+    }
 
     private static List<Scheme> listOfSchemes = new ArrayList<Scheme>();
 

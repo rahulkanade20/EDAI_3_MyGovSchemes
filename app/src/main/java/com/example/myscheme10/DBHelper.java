@@ -23,7 +23,7 @@ public class DBHelper extends SQLiteOpenHelper {
     // The Android's default system path
     // of your application database.
     private static String DB_PATH = "";
-    private static String DB_NAME = "database8.db";
+    private static String DB_NAME = "database12.db";
     private static int DB_VER = 1;
     private SQLiteOpenHelper sqLiteOpenHelper;
 
@@ -48,11 +48,13 @@ public class DBHelper extends SQLiteOpenHelper {
     {
         int result = 0;
 
+        int result1 = 0;
+
         try {
             Log.println(Log.DEBUG, "Testsql", "inside DB Create");
             String sqlstr = "CREATE TABLE " + "FAMILY " + " ( " + "family_id INTEGER NOT NULL, " + "surname TEXT NOT NULL, " + "NoOfMembers INTEGER NOT NULL, " + "state TEXT NOT NULL, " + "city TEXT NOT NULL, " + "familyIncome INTEGER NOT NULL, " + "caste TEXT NOT NULL )";
             String sqlstr1 = "CREATE TABLE " + "MEMBERS " + " ( " + "family_id INTEGER NOT NULL, " + "name TEXT NOT NULL, " + "occupation TEXT NOT NULL, " + "gender TEXT NOT NULL, " + "age INTEGER NOT NULL, " + "yearlyIncome INTEGER NOT NULL )";
-            String sqlstr2 = "CREATE TABLE " + "SCHEMES " + " ( " + "scheme_id INTEGER NOT NULL, " + "gender TEXT NOT NULL, " + "age TEXT NOT NULL, " + "occupation TEXT NOT NULL, " + "caste TEXT NOT NULL, " + "centreorstate TEXT NOT NULL, " + "income TEXT NOT NULL, " + "description TEXT NOT NULL, " + "link TEXT NOT NULL )";
+            String sqlstr2 = "CREATE TABLE " + "SCHEMES " + " ( " + "scheme_id INTEGER NOT NULL, " + "gender TEXT NOT NULL, " + "age TEXT NOT NULL, " + "occupation TEXT NOT NULL, " + "caste TEXT NOT NULL, " + "centreorstate TEXT NOT NULL, " + "income TEXT NOT NULL, " + "familyIncome TEXT NOT NULL, " + "description TEXT NOT NULL, " + "link TEXT NOT NULL )";
 
             Log.println(Log.DEBUG, "sqlquery", sqlstr);
             Log.println(Log.DEBUG, "sqlquery1", sqlstr1);
@@ -88,6 +90,7 @@ public class DBHelper extends SQLiteOpenHelper {
             contentValues1.put("caste", "NA");
             contentValues1.put("centreorstate", "centre");
             contentValues1.put("income", "NA");
+            contentValues1.put("familyIncome", "NA");
             contentValues1.put("description", "Sukanya Samriddhi Scheme");
             contentValues1.put("link", "http://nsiindia.gov.in/InternalPage.aspx?Id_Pk=89");
 
@@ -96,7 +99,7 @@ public class DBHelper extends SQLiteOpenHelper {
             result = (int) db.insertOrThrow("SCHEMES", null, contentValues1);
             //    Log.println(Log.DEBUG, "TestResult", Integer.toString(result));
 
-            db.setTransactionSuccessful();
+            db.setTransactionSuccessful(); // commit transaction
             if(result <= 0) {
 
                 Log.println(Log.DEBUG, "Test", Integer.toString(result));
@@ -118,6 +121,50 @@ public class DBHelper extends SQLiteOpenHelper {
             db.endTransaction();
         //    db.close();
         }
+
+        try
+        {
+            ContentValues contentValues2 = new ContentValues();
+
+            contentValues2.put("scheme_id", 2);
+            contentValues2.put("gender", "NA");
+            contentValues2.put("age", "NA");
+            contentValues2.put("occupation", "NA");
+            contentValues2.put("caste", "ST");
+            contentValues2.put("centreorstate", "state");
+            contentValues2.put("income", "NA");
+            contentValues2.put("familyIncome", "income<=250000");
+            contentValues2.put("description", "Vocational Education Fee Reimbursement");
+            contentValues2.put("link", "https://mahadbtmahait.gov.in/Home/Index");
+
+            db.beginTransaction();
+
+            result1 = (int) db.insertOrThrow("SCHEMES", null, contentValues2);
+            //    Log.println(Log.DEBUG, "TestResult", Integer.toString(result));
+
+            db.setTransactionSuccessful(); // commit transaction
+            if(result1 <= 0) {
+
+                Log.println(Log.DEBUG, "Test", Integer.toString(result));
+
+            }
+
+            else {
+
+                Log.println(Log.DEBUG, "Content2", "returning true from insert content2 function");
+
+            }
+
+        } catch (android.database.SQLException e) {
+            e.printStackTrace();
+            Log.println(Log.DEBUG, "Test", e.getMessage());
+
+        }
+        finally {
+            db.endTransaction();
+            //    db.close();
+        }
+
 
 
      /*   db.execSQL("CREATE TABLE "Family" (
@@ -374,6 +421,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
     //    Scheme schemeObj = new Scheme();
 
+        if(Scheme.getListOfSchemes().size() > 0) {
+
+            return;
+        }
+
         String SQLQuery = "SELECT * FROM Schemes";
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -399,8 +451,11 @@ public class DBHelper extends SQLiteOpenHelper {
                     schemeObj.setCentreOrState(result.getString(result.getColumnIndex("centreorstate")));
                     schemeObj.setDescription(result.getString(result.getColumnIndex("description")));
                     schemeObj.setLink(result.getString(result.getColumnIndex("link")));
+                    schemeObj.setFamIncome(result.getString(result.getColumnIndex("familyIncome")));
 
                     Scheme.addScheme(schemeObj);
+
+                    result.moveToNext();
 
                 }
             }

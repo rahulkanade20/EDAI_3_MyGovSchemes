@@ -69,6 +69,7 @@ public class schemeEvaluation {
 
         String ageCondition = scheme.getAge();
         String incomeCondition = scheme.getIncome();
+        String famIncomeCondition = scheme.getFamIncome();
 
         ArrayList<Boolean> array = new ArrayList<>();
         ArrayList<Boolean> array1 = new ArrayList<>();
@@ -78,10 +79,13 @@ public class schemeEvaluation {
         array1.add(true);
         array1.add(true);
         array1.add(true);
+        array1.add(true);
 
         String ageArray[] = {};
 
         String incomeArray[] = {};
+
+        String famIncomeArray[] = {};
 
         if(scheme.getAge().equals("NA")) {
 
@@ -126,6 +130,8 @@ public class schemeEvaluation {
             }
         }
 
+        // ***************************MemincomeEval***************************************
+
         if(scheme.getIncome().equals("NA")) {
             Log.println(Log.DEBUG, "kanyaScheme1", "income met");
             array.add(true);
@@ -139,7 +145,7 @@ public class schemeEvaluation {
 
                 if (incomeArray.length == 2) {
 
-                    if (member.getAge() <= Integer.valueOf(incomeArray[1])) {
+                    if (member.getYearlyIncome() <= Integer.valueOf(incomeArray[1])) {
                         Log.println(Log.DEBUG, "kanyaScheme1", "income met");
                         array.add(true);
                     }
@@ -155,9 +161,9 @@ public class schemeEvaluation {
 
             } else if (incomeCondition.contains(">=")) {
 
-                incomeArray = ageCondition.split(">=");
+                incomeArray = incomeCondition.split(">=");
 
-                if (member.getAge() >= Integer.valueOf(incomeArray[1])) {
+                if (member.getYearlyIncome() >= Integer.valueOf(incomeArray[1])) {
                     Log.println(Log.DEBUG, "kanyaScheme1", "income met");
                     array.add(true);
                 }
@@ -165,6 +171,51 @@ public class schemeEvaluation {
 
             }
         }
+
+        // ***************************FamincomeEval******************************
+
+        Log.println(Log.DEBUG, "famCat", "starting famInc");
+
+        if(scheme.getFamIncome().equals("NA")) {
+            Log.println(Log.DEBUG, "famCat", "income NA");
+            array.add(true);
+        }
+
+        else {
+
+            if (famIncomeCondition.contains("<=")) {
+
+                famIncomeArray = famIncomeCondition.split("<=");
+
+                if (famIncomeArray.length == 2) {
+
+                    if (family.getFamilyIncome() <= Integer.valueOf(famIncomeArray[1])) {
+                        Log.println(Log.DEBUG, "famIncome", "fam income met");
+                        array.add(true);
+                    }
+                }
+
+                if (famIncomeArray.length == 3) {
+
+                    if (Integer.valueOf(famIncomeArray[0]) <= family.getFamilyIncome() && family.getFamilyIncome() <= Integer.valueOf(famIncomeArray[2])) {
+                        Log.println(Log.DEBUG, "famIncome", "fam income met");
+                        array.add(true);
+                    }
+                }
+
+            } else if (famIncomeCondition.contains(">=")) {
+
+                famIncomeArray = famIncomeCondition.split(">=");
+
+                if (family.getFamilyIncome() >= Integer.valueOf(incomeArray[1])) {
+                    Log.println(Log.DEBUG, "kanyaScheme1", "income met");
+                    array.add(true);
+                }
+
+
+            }
+        }
+
 
         //    int count = countMatches(ageCondition);
 

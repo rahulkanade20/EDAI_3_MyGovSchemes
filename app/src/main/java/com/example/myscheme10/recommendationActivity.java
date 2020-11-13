@@ -56,6 +56,8 @@ public class recommendationActivity extends AppCompatActivity {
 
         db.getSchemes();
 
+
+
         Log.println(Log.DEBUG, "recommendation", "inside recommendation");
 
 
@@ -66,7 +68,7 @@ public class recommendationActivity extends AppCompatActivity {
 
         for(int i=0; i<Scheme.getListOfSchemes().size(); i++) {
 
-            Log.println(Log.DEBUG, "recommendation", String.valueOf(Scheme.getListOfSchemes().get(i).getDescription()));//.getMySchemes().get(0)));
+            Log.println(Log.DEBUG, "scheme_list", String.valueOf(Scheme.getListOfSchemes().get(i).getDescription()));//.getMySchemes().get(0)));
         }
 
         Log.println(Log.DEBUG, "recommendation_size", String.valueOf(family.getMembers().size()));//.getMySchemes().get(0)));
@@ -79,7 +81,7 @@ public class recommendationActivity extends AppCompatActivity {
 
                 result = evaluator.Evaluator(family, family.getMembers().get(i), Scheme.getListOfSchemes().get(j));
 
-                if(result.size() == 5) {
+                if(result.size() == 6) {
 
                     Log.println(Log.DEBUG, "recommendation_s", String.valueOf(family.getMembers().get(i).getName()));//.getMySchemes().get(0)));
 
