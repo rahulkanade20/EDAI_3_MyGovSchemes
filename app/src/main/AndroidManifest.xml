@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".recommendationActivity"></activity>
+        <activity android:name=".deleteActivity"></activity>
+        <activity android:name=".recommendationActivity" />
         <activity android:name=".PersonalInfoActivity" />
         <activity android:name=".NewProfileActivity" />
         <activity android:name=".MainActivity">

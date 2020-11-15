@@ -31,6 +31,8 @@ public class NewProfileActivity extends AppCompatActivity {
 
     private Button addMember;
 
+    private Button deleteMember;
+
     private Button save;
 
     String[] stringArray = {};
@@ -85,6 +87,15 @@ public class NewProfileActivity extends AppCompatActivity {
             }
         });
 
+        deleteMember = (Button) findViewById(R.id.buttonDel);
+
+        deleteMember.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteMemberInvoke();
+            }
+        });
+
         save = (Button) findViewById(R.id.save1);
 
         save.setOnClickListener(new View.OnClickListener() {
@@ -121,6 +132,12 @@ public class NewProfileActivity extends AppCompatActivity {
     public void addMemberInvoke() {
 
         Intent intent = new Intent(this, PersonalInfoActivity.class);
+        startActivity(intent);
+    }
+
+    public void deleteMemberInvoke() {
+
+        Intent intent = new Intent(this, deleteActivity.class);
         startActivity(intent);
     }
 

@@ -475,6 +475,48 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    public void deleteMember(String name) {
+
+        String name1 = "'" + name + "'";
+
+        String[] whereArray = {name};
+
+        String SQLQuery = "DELETE FROM MEMBERS WHERE name = " + name1;
+        Log.println(Log.DEBUG, "deleteMember", "DELETE MEMBER Query is " + SQLQuery);
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        try{
+
+            Log.println(Log.DEBUG, "deleteMember", "Inside try of delete ");
+
+            db.beginTransaction();
+
+        //    Cursor result = db.rawQuery(SQLQuery, array);
+
+            db.delete("MEMBERS", "name=?", whereArray);
+
+        //    Log.println(Log.DEBUG, "deleteMember", "Cursor result " + String.valueOf(result));
+
+            db.setTransactionSuccessful();
+
+
+
+        } catch (android.database.SQLException e) {
+
+        e.printStackTrace();
+
+        Log.println(Log.DEBUG, "deleteMember", e.getMessage());
+
+        //    return schemeObj;
+
+        } finally {
+
+                db.endTransaction();
+                db.close();
+        }
+
+    }
+
 /*        //    result2.moveToFirst();
 
             Log.println(Log.DEBUG, "from database", Integer.toString(result.getColumnCount()));
