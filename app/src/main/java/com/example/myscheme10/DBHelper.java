@@ -238,9 +238,9 @@ public class DBHelper extends SQLiteOpenHelper {
             db.beginTransaction();
 
             String sqlStr = "DELETE FROM Family";
-            String sqlStr1 = "DELETE FROM Members";
+            //String sqlStr1 = "DELETE FROM Members";
 
-            db.execSQL(sqlStr1);
+            //db.execSQL(sqlStr1);
             db.execSQL(sqlStr);
 
             result = (int) db.insertOrThrow("FAMILY", null, contentValues1);

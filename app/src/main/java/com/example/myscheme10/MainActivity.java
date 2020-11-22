@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button btnProfile;
 
-    private Button refresh;
+    private Button viewMembers;
 
     private Button recommend;
 
@@ -40,9 +40,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        refresh = (Button) findViewById(R.id.button2);
+        viewMembers = (Button) findViewById(R.id.button2);
 
-        refresh.setOnClickListener(new View.OnClickListener() {
+        viewMembers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 refreshInvoke();
@@ -85,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void refreshInvoke() {
 
+        Intent intent = new Intent(this, viewMembersActivity.class);
+        startActivity(intent);
 
     }
 
