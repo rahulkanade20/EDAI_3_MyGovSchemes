@@ -12,9 +12,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 
-public class NewProfileActivity extends AppCompatActivity {
+public class NewProfileActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     String surname;
     String state;
@@ -41,7 +43,7 @@ public class NewProfileActivity extends AppCompatActivity {
     EditText noOfMemInput;
     EditText stateInput;
     EditText cityInput;
-    EditText casteInput;
+    Spinner casteInput;
     EditText famIncomeInput;
 
     @Override
@@ -51,6 +53,16 @@ public class NewProfileActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_profile);
+
+
+
+        Spinner spinner = findViewById(R.id.spinner2);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.caste, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+
         /*
         Spinner spinner = findViewById(R.id.spinner1);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -64,8 +76,10 @@ public class NewProfileActivity extends AppCompatActivity {
         noOfMemInput = (EditText) findViewById(R.id.txtMemCnt);
         stateInput = (EditText) findViewById(R.id.txtState);
         cityInput = (EditText) findViewById(R.id.txtCity);
-        casteInput = (EditText) findViewById(R.id.txtCaste);
+    //    casteInput = (EditText) findViewById(R.id.txtCaste);
         famIncomeInput = (EditText) findViewById(R.id.txtIncome);
+
+        casteInput = (Spinner) findViewById(R.id.spinner2);
 
         btnBack = (Button) findViewById(R.id.btnBack);
 
@@ -115,7 +129,7 @@ public class NewProfileActivity extends AppCompatActivity {
 
         cityInput.setText(family1_.getCity());
 
-        casteInput.setText(family1_.getCaste());
+        //casteInput.setText(family1_.getCaste());
 
         famIncomeInput.setText(Integer.toString(family1_.getFamilyIncome()));
 
@@ -146,7 +160,7 @@ public class NewProfileActivity extends AppCompatActivity {
         surname = surnameInput.getText().toString();
         state = stateInput.getText().toString();
         city = cityInput.getText().toString();
-        caste = casteInput.getText().toString();
+        caste = casteInput.getSelectedItem().toString();
         familyMembers = Integer.valueOf(noOfMemInput.getText().toString());
         familyIncome = Integer.valueOf(famIncomeInput.getText().toString());
 
@@ -178,7 +192,7 @@ public class NewProfileActivity extends AppCompatActivity {
 
     }
 
-/*
+
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
         Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
@@ -187,5 +201,5 @@ public class NewProfileActivity extends AppCompatActivity {
     public void onNothingSelected(AdapterView<?> parent) {
     }
 
- */
+
 }

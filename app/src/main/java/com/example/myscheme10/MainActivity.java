@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         viewMembers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                refreshInvoke();
+                viewMembersInvoke();
             }
         });
 
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void refreshInvoke() {
+    public void viewMembersInvoke() {
 
         Intent intent = new Intent(this, viewMembersActivity.class);
         startActivity(intent);

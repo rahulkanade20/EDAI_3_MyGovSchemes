@@ -13,11 +13,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PersonalInfoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private Button save;
 
     private Button btnBack;
+
+    private Spinner spinner1, spinner3;
 
     Member member = new Member();
 
@@ -25,7 +30,7 @@ public class PersonalInfoActivity extends AppCompatActivity implements AdapterVi
 
     EditText nameInput;
     EditText ageInput;
-    EditText occupationInput;
+    Spinner occupationInput;
     EditText yearlyIncomeInput;
     Spinner genderInput;
 
@@ -40,6 +45,7 @@ public class PersonalInfoActivity extends AppCompatActivity implements AdapterVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_info);
 
+        addItemsOnSpinner3();
 
         Spinner spinner = findViewById(R.id.spinner1);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -50,7 +56,7 @@ public class PersonalInfoActivity extends AppCompatActivity implements AdapterVi
 
         nameInput = (EditText) findViewById(R.id.editTextTextPersonName8);
         ageInput = (EditText) findViewById(R.id.editTextNumber3);
-        occupationInput = (EditText) findViewById(R.id.editTextTextPersonName9);
+        occupationInput = (Spinner) findViewById(R.id.spinner3);
         yearlyIncomeInput = (EditText) findViewById(R.id.editTextNumber4);
 
         genderInput = (Spinner) findViewById(R.id.spinner1);
@@ -89,7 +95,7 @@ public class PersonalInfoActivity extends AppCompatActivity implements AdapterVi
     public void saveInvoke() {
 
         name = nameInput.getText().toString();
-        occupation = occupationInput.getText().toString();
+        occupation = occupationInput.getSelectedItem().toString();
         age = Integer.valueOf(ageInput.getText().toString());
         yearlyIncome = Integer.valueOf(yearlyIncomeInput.getText().toString());
 
@@ -132,5 +138,24 @@ public class PersonalInfoActivity extends AppCompatActivity implements AdapterVi
         Intent intent = new Intent(this, NewProfileActivity.class);
         startActivity(intent);
 
+    }
+
+    public void addItemsOnSpinner3() {
+
+        spinner3 = (Spinner) findViewById(R.id.spinner3);
+        List<String> list = new ArrayList<String>();
+        list.add("Occupation");
+        list.add("Farmer");
+        list.add("Businessman");
+        list.add("Doctor");
+        list.add("Lawyer");
+        list.add("Army");
+        list.add("Student");
+        list.add("Other");
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner3.setAdapter(dataAdapter);
     }
 }

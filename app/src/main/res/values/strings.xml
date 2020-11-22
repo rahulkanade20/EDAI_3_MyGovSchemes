@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyScheme1.0</string>
+    <string name="app_name">Government Scheme Setu</string>
     <string name="title_activity_profile">ScrollingActivity</string>
     <string name="large_text">
 
@@ -96,6 +96,32 @@
     <string-array name="genderList">
         <item>Male</item>
         <item>Female</item>
+    </string-array>
+
+    <string-array name="caste">
+        <item>Caste</item>
+        <item>OPEN</item>
+        <item>OBC</item>
+        <item>SEBC</item>
+        <item>SBC</item>
+        <item>SC</item>
+        <item>ST</item>
+        <item>VJ</item>
+        <item>NT</item>
+    </string-array>
+
+    <string name="occupation_prompt">Choose a occupation</string>
+
+    <string-array name="occupation">
+        <item>Occupation</item>
+        <item>Farmer</item>
+        <item>Businessman</item>
+        <item>Doctor</item>
+        <item>Lawyer</item>
+        <item>Army</item>
+        <item>Worker</item>
+        <item>Student</item>
+        <item>Other</item>
     </string-array>
 
 </resources>
