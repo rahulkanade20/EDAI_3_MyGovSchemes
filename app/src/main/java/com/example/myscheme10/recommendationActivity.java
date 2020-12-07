@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.util.Linkify;
 import android.view.View;
 import android.widget.Button;
 
@@ -127,16 +129,23 @@ public class recommendationActivity extends AppCompatActivity {
                 recommendationString = recommendationString + "no schemes found." + "\n";
             }
 
+        //    recommendationString = recommendationString + "<a href = \"www.google.com\"> google </a>";
+
             recommendationString = recommendationString + "********************************" + "\n";
 
 
             //    Log.println(Log.DEBUG, "recommendation1", String.valueOf(family.getMembers().get(i).getMySchemes().size()));//.getMySchemes().get(0)));
         }
 
+        //recommendationString = recommendationString + "</html>";
+
         Log.println(Log.DEBUG, "recommendationString", recommendationString);//.getMySchemes().get(0)));
 
         TextView textView = (TextView) findViewById(R.id.textView2);
         textView.setText(recommendationString);
+        // textView.setText(Html.fromHtml(recommendationString));
+
+        Linkify.addLinks(textView, Linkify.ALL);
 /*
         for(int i=0; i<family.getMembers().size(); i++) {
 
