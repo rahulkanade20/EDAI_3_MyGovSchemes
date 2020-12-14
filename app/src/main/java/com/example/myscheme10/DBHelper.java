@@ -23,7 +23,7 @@ public class DBHelper extends SQLiteOpenHelper {
     // The Android's default system path
     // of your application database.
     private static String DB_PATH = "";
-    private static String DB_NAME = "database12.db";
+    private static String DB_NAME = "database15.db";
     private static int DB_VER = 1;
     private SQLiteOpenHelper sqLiteOpenHelper;
 
@@ -152,6 +152,443 @@ public class DBHelper extends SQLiteOpenHelper {
             else {
 
                 Log.println(Log.DEBUG, "Content2", "returning true from insert content2 function");
+
+            }
+
+        } catch (android.database.SQLException e) {
+            e.printStackTrace();
+            Log.println(Log.DEBUG, "Test", e.getMessage());
+
+        }
+        finally {
+            db.endTransaction();
+            //    db.close();
+        }
+
+        try
+        {
+            ContentValues contentValues3 = new ContentValues();
+
+            contentValues3.put("scheme_id", 3);
+            contentValues3.put("gender", "NA");
+            contentValues3.put("age", "NA");
+            contentValues3.put("occupation", "Farmer");
+            contentValues3.put("caste", "NA");
+            contentValues3.put("centreorstate", "centre");
+            contentValues3.put("income", "NA");
+            contentValues3.put("familyIncome", "NA");
+            contentValues3.put("description", "Pradhan Mantri Fasal Bima Yojana (PMFBY)");
+            contentValues3.put("link", "https://pmfby.gov.in/");
+
+            db.beginTransaction();
+
+            result = (int) db.insertOrThrow("SCHEMES", null, contentValues3);
+            //    Log.println(Log.DEBUG, "TestResult", Integer.toString(result));
+
+            db.setTransactionSuccessful(); // commit transaction
+            if(result <= 0) {
+
+                Log.println(Log.DEBUG, "Test", Integer.toString(result));
+
+            }
+
+            else {
+
+                Log.println(Log.DEBUG, "Test", "returning true from insert member function");
+
+            }
+
+        } catch (android.database.SQLException e) {
+            e.printStackTrace();
+            Log.println(Log.DEBUG, "Test", e.getMessage());
+
+        }
+        finally {
+            db.endTransaction();
+            //    db.close();
+        }
+
+
+        try
+        {
+            ContentValues contentValues4 = new ContentValues();
+
+            contentValues4.put("scheme_id", 4);
+            contentValues4.put("gender", "NA");
+            contentValues4.put("age", "NA");
+            contentValues4.put("occupation", "Farmer");
+            contentValues4.put("caste", "NA");
+            contentValues4.put("centreorstate", "state");
+            contentValues4.put("income", "NA");
+            contentValues4.put("familyIncome", "NA");
+            contentValues4.put("description", "Solar water pumps scheme for farmers in Maharashtra");
+            contentValues4.put("link", "//mahades.maharashtra.gov.in/MPSIMS/ViewSchemeProfile.do?OWASP_CSRFTOKEN=null&mode=printProfile&recordId=96619&planyearId=2016");
+
+            db.beginTransaction();
+
+            result = (int) db.insertOrThrow("SCHEMES", null, contentValues4);
+            //    Log.println(Log.DEBUG, "TestResult", Integer.toString(result));
+
+            db.setTransactionSuccessful(); // commit transaction
+            if(result <= 0) {
+
+                Log.println(Log.DEBUG, "Test", Integer.toString(result));
+
+            }
+
+            else {
+
+                Log.println(Log.DEBUG, "Test", "returning true from insert member function");
+
+            }
+
+        } catch (android.database.SQLException e) {
+            e.printStackTrace();
+            Log.println(Log.DEBUG, "Test", e.getMessage());
+
+        }
+        finally {
+            db.endTransaction();
+            //    db.close();
+        }
+
+
+        try
+        {
+            ContentValues contentValues5 = new ContentValues();
+
+            contentValues5.put("scheme_id", 5);
+            contentValues5.put("gender", "NA");
+            contentValues5.put("age", "NA");
+            contentValues5.put("occupation", "Farmer");
+            contentValues5.put("caste", "NA");
+            contentValues5.put("centreorstate", "centre");
+            contentValues5.put("income", "NA");
+            contentValues5.put("familyIncome", "NA");
+            contentValues5.put("description", "Paramparagat Krishi Vikas Yojna (PKVY)");
+            contentValues5.put("link", "//pgsindia-ncof.gov.in/pkvy/index.aspx");
+
+            db.beginTransaction();
+
+            result = (int) db.insertOrThrow("SCHEMES", null, contentValues5);
+            //    Log.println(Log.DEBUG, "TestResult", Integer.toString(result));
+
+            db.setTransactionSuccessful(); // commit transaction
+            if(result <= 0) {
+
+                Log.println(Log.DEBUG, "Test", Integer.toString(result));
+
+            }
+
+            else {
+
+                Log.println(Log.DEBUG, "Test", "returning true from insert member function");
+
+            }
+
+        } catch (android.database.SQLException e) {
+            e.printStackTrace();
+            Log.println(Log.DEBUG, "Test", e.getMessage());
+
+        }
+        finally {
+            db.endTransaction();
+            //    db.close();
+        }
+
+
+        try
+        {
+            ContentValues contentValues6 = new ContentValues();
+
+            contentValues6.put("scheme_id", 6);
+            contentValues6.put("gender", "NA");
+            contentValues6.put("age", "NA");
+            contentValues6.put("occupation", "Farmer");
+            contentValues6.put("caste", "NA");
+            contentValues6.put("centreorstate", "state");
+            contentValues6.put("income", "NA");
+            contentValues6.put("familyIncome", "NA");
+            contentValues6.put("description", "Mahatma Jyotiba Phule Jan Arogya Yojana");
+            contentValues6.put("link", "https://www.jeevandayee.gov.in/");
+
+            db.beginTransaction();
+
+            result = (int) db.insertOrThrow("SCHEMES", null, contentValues6);
+            //    Log.println(Log.DEBUG, "TestResult", Integer.toString(result));
+
+            db.setTransactionSuccessful(); // commit transaction
+            if(result <= 0) {
+
+                Log.println(Log.DEBUG, "Test", Integer.toString(result));
+
+            }
+
+            else {
+
+                Log.println(Log.DEBUG, "Test", "returning true from insert member function");
+
+            }
+
+        } catch (android.database.SQLException e) {
+            e.printStackTrace();
+            Log.println(Log.DEBUG, "Test", e.getMessage());
+
+        }
+        finally {
+            db.endTransaction();
+            //    db.close();
+        }
+
+
+        try
+        {
+            ContentValues contentValues7 = new ContentValues();
+
+            contentValues7.put("scheme_id", 7);
+            contentValues7.put("gender", "NA");
+            contentValues7.put("age", "18<=age<=40");
+            contentValues7.put("occupation", "Farmer");
+            contentValues7.put("caste", "NA");
+            contentValues7.put("centreorstate", "centre");
+            contentValues7.put("income", "NA");
+            contentValues7.put("familyIncome", "NA");
+            contentValues7.put("description", "Pradhan Mantri Kisan Maandhan yojana");
+            contentValues7.put("link", "//pmkmy.gov.in/");
+
+            db.beginTransaction();
+
+            result = (int) db.insertOrThrow("SCHEMES", null, contentValues7);
+            //    Log.println(Log.DEBUG, "TestResult", Integer.toString(result));
+
+            db.setTransactionSuccessful(); // commit transaction
+            if(result <= 0) {
+
+                Log.println(Log.DEBUG, "Test", Integer.toString(result));
+
+            }
+
+            else {
+
+                Log.println(Log.DEBUG, "Test", "returning true from insert member function");
+
+            }
+
+        } catch (android.database.SQLException e) {
+            e.printStackTrace();
+            Log.println(Log.DEBUG, "Test", e.getMessage());
+
+        }
+        finally {
+            db.endTransaction();
+            //    db.close();
+        }
+
+        try
+        {
+            ContentValues contentValues8 = new ContentValues();
+
+            contentValues8.put("scheme_id", 8);
+            contentValues8.put("gender", "NA");
+            contentValues8.put("age", "NA");
+            contentValues8.put("occupation", "Doctor");
+            contentValues8.put("caste", "NA");
+            contentValues8.put("centreorstate", "centre");
+            contentValues8.put("income", "NA");
+            contentValues8.put("familyIncome", "NA");
+            contentValues8.put("description", "Medical insurance scheme");
+            contentValues8.put("link", "https://www.mohfw.gov.in/pdf/FAQPradhanMantriGaribKalyanPackageInsuranceSchemeforHealthWorkersFightingCOVID19.pdf");
+
+            db.beginTransaction();
+
+            result = (int) db.insertOrThrow("SCHEMES", null, contentValues8);
+            //    Log.println(Log.DEBUG, "TestResult", Integer.toString(result));
+
+            db.setTransactionSuccessful(); // commit transaction
+            if(result <= 0) {
+
+                Log.println(Log.DEBUG, "Test", Integer.toString(result));
+
+            }
+
+            else {
+
+                Log.println(Log.DEBUG, "Test", "returning true from insert member function");
+
+            }
+
+        } catch (android.database.SQLException e) {
+            e.printStackTrace();
+            Log.println(Log.DEBUG, "Test", e.getMessage());
+
+        }
+        finally {
+            db.endTransaction();
+            //    db.close();
+        }
+
+
+        try
+        {
+            ContentValues contentValues9 = new ContentValues();
+
+            contentValues9.put("scheme_id", 9);
+            contentValues9.put("gender", "NA");
+            contentValues9.put("age", "NA");
+            contentValues9.put("occupation", "Lawyer");
+            contentValues9.put("caste", "NA");
+            contentValues9.put("centreorstate", "centre");
+            contentValues9.put("income", "NA");
+            contentValues9.put("familyIncome", "NA");
+            contentValues9.put("description", "Tele Law Scheme");
+            contentValues9.put("link", "https://doj.gov.in/page/tele-law-scheme");
+
+            db.beginTransaction();
+
+            result = (int) db.insertOrThrow("SCHEMES", null, contentValues9);
+            //    Log.println(Log.DEBUG, "TestResult", Integer.toString(result));
+
+            db.setTransactionSuccessful(); // commit transaction
+            if(result <= 0) {
+
+                Log.println(Log.DEBUG, "Test", Integer.toString(result));
+
+            }
+
+            else {
+
+                Log.println(Log.DEBUG, "Test", "returning true from insert member function");
+
+            }
+
+        } catch (android.database.SQLException e) {
+            e.printStackTrace();
+            Log.println(Log.DEBUG, "Test", e.getMessage());
+
+        }
+        finally {
+            db.endTransaction();
+            //    db.close();
+        }
+
+
+        try
+        {
+            ContentValues contentValues10 = new ContentValues();
+
+            contentValues10.put("scheme_id", 10);
+            contentValues10.put("gender", "NA");
+            contentValues10.put("age", "NA");
+            contentValues10.put("occupation", "Army");
+            contentValues10.put("caste", "NA");
+            contentValues10.put("centreorstate", "centre");
+            contentValues10.put("income", "NA");
+            contentValues10.put("familyIncome", "NA");
+            contentValues10.put("description", "Sainik Rest Houses");
+            contentValues10.put("link", "http://www.desw.gov.in/welfare-schemes");
+
+            db.beginTransaction();
+
+            result = (int) db.insertOrThrow("SCHEMES", null, contentValues10);
+            //    Log.println(Log.DEBUG, "TestResult", Integer.toString(result));
+
+            db.setTransactionSuccessful(); // commit transaction
+            if(result <= 0) {
+
+                Log.println(Log.DEBUG, "Test", Integer.toString(result));
+
+            }
+
+            else {
+
+                Log.println(Log.DEBUG, "Test", "returning true from insert member function");
+
+            }
+
+        } catch (android.database.SQLException e) {
+            e.printStackTrace();
+            Log.println(Log.DEBUG, "Test", e.getMessage());
+
+        }
+        finally {
+            db.endTransaction();
+            //    db.close();
+        }
+
+        try
+        {
+            ContentValues contentValues11 = new ContentValues();
+
+            contentValues11.put("scheme_id", 11);
+            contentValues11.put("gender", "NA");
+            contentValues11.put("age", "NA");
+            contentValues11.put("occupation", "Army");
+            contentValues11.put("caste", "NA");
+            contentValues11.put("centreorstate", "centre");
+            contentValues11.put("income", "NA");
+            contentValues11.put("familyIncome", "NA");
+            contentValues11.put("description", "Financial Assistance for Ex-Servicemen in Penury");
+            contentValues11.put("link", "http://www.desw.gov.in/welfare-schemes");
+
+            db.beginTransaction();
+
+            result = (int) db.insertOrThrow("SCHEMES", null, contentValues11);
+            //    Log.println(Log.DEBUG, "TestResult", Integer.toString(result));
+
+            db.setTransactionSuccessful(); // commit transaction
+            if(result <= 0) {
+
+                Log.println(Log.DEBUG, "Test", Integer.toString(result));
+
+            }
+
+            else {
+
+                Log.println(Log.DEBUG, "Test", "returning true from insert member function");
+
+            }
+
+        } catch (android.database.SQLException e) {
+            e.printStackTrace();
+            Log.println(Log.DEBUG, "Test", e.getMessage());
+
+        }
+        finally {
+            db.endTransaction();
+            //    db.close();
+        }
+
+
+        try
+        {
+            ContentValues contentValues12 = new ContentValues();
+
+            contentValues12.put("scheme_id", 12);
+            contentValues12.put("gender", "NA");
+            contentValues12.put("age", "NA");
+            contentValues12.put("occupation", "Army");
+            contentValues12.put("caste", "NA");
+            contentValues12.put("centreorstate", "centre");
+            contentValues12.put("income", "NA");
+            contentValues12.put("familyIncome", "NA");
+            contentValues12.put("description", "RMEWF-Financial Assistance for Education of Children/Widows of ESM");
+            contentValues12.put("link", "http://www.desw.gov.in/welfare-schemes");
+
+            db.beginTransaction();
+
+            result = (int) db.insertOrThrow("SCHEMES", null, contentValues12);
+            //    Log.println(Log.DEBUG, "TestResult", Integer.toString(result));
+
+            db.setTransactionSuccessful(); // commit transaction
+            if(result <= 0) {
+
+                Log.println(Log.DEBUG, "Test", Integer.toString(result));
+
+            }
+
+            else {
+
+                Log.println(Log.DEBUG, "Test", "returning true from insert member function");
 
             }
 
