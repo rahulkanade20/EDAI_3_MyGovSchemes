@@ -23,7 +23,7 @@ public class DBHelper extends SQLiteOpenHelper {
     // The Android's default system path
     // of your application database.
     private static String DB_PATH = "";
-    private static String DB_NAME = "database17.db";
+    private static String DB_NAME = "database18.db";
     private static int DB_VER = 1;
     private SQLiteOpenHelper sqLiteOpenHelper;
 
@@ -654,7 +654,7 @@ public class DBHelper extends SQLiteOpenHelper {
             contentValues14.put("scheme_id", 14);
             contentValues14.put("gender", "NA");
             contentValues14.put("age", "NA");
-            contentValues14.put("occupation", "NA");
+            contentValues14.put("occupation", "Student");
             contentValues14.put("caste", "SBC");
             contentValues14.put("centreorstate", "state");
             contentValues14.put("income", "NA");
