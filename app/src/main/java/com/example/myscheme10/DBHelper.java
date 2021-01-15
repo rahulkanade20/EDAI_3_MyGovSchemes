@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
- import java.io.FileOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -23,7 +23,7 @@ public class DBHelper extends SQLiteOpenHelper {
     // The Android's default system path
     // of your application database.
     private static String DB_PATH = "";
-    private static String DB_NAME = "database15.db";
+    private static String DB_NAME = "database17.db";
     private static int DB_VER = 1;
     private SQLiteOpenHelper sqLiteOpenHelper;
 
@@ -601,6 +601,139 @@ public class DBHelper extends SQLiteOpenHelper {
             db.endTransaction();
             //    db.close();
         }
+
+
+        try
+        {
+            ContentValues contentValues13 = new ContentValues();
+
+            contentValues13.put("scheme_id", 13);
+            contentValues13.put("gender", "NA");
+            contentValues13.put("age", "NA");
+            contentValues13.put("occupation", "Teacher");
+            contentValues13.put("caste", "NA");
+            contentValues13.put("centreorstate", "centre");
+            contentValues13.put("income", "NA");
+            contentValues13.put("familyIncome", "NA");
+            contentValues13.put("description", "AICTE-INAE TEACHERS RESEARCH FELLOWSHIP SCHEME FOR FACULTY");
+            contentValues13.put("link", "https://www.inae.in/aicte-inae-teachers-research-fellowship-scheme/");
+
+            db.beginTransaction();
+
+            result = (int) db.insertOrThrow("SCHEMES", null, contentValues13);
+            //    Log.println(Log.DEBUG, "TestResult", Integer.toString(result));
+
+            db.setTransactionSuccessful(); // commit transaction
+            if(result <= 0) {
+
+                Log.println(Log.DEBUG, "Test", Integer.toString(result));
+
+            }
+
+            else {
+
+                Log.println(Log.DEBUG, "Test", "returning true from insert member function");
+
+            }
+
+        } catch (android.database.SQLException e) {
+            e.printStackTrace();
+            Log.println(Log.DEBUG, "Test", e.getMessage());
+
+        }
+        finally {
+            db.endTransaction();
+            //    db.close();
+        }
+
+
+        try
+        {
+            ContentValues contentValues14 = new ContentValues();
+
+            contentValues14.put("scheme_id", 14);
+            contentValues14.put("gender", "NA");
+            contentValues14.put("age", "NA");
+            contentValues14.put("occupation", "NA");
+            contentValues14.put("caste", "SBC");
+            contentValues14.put("centreorstate", "state");
+            contentValues14.put("income", "NA");
+            contentValues14.put("familyIncome", "income<=100000");
+            contentValues14.put("description", "Post Matric Scholarhip to SBC students");
+            contentValues14.put("link", "https://mahadbtmahait.gov.in/Home/Index");
+
+            db.beginTransaction();
+
+            result = (int) db.insertOrThrow("SCHEMES", null, contentValues14);
+            //    Log.println(Log.DEBUG, "TestResult", Integer.toString(result));
+
+            db.setTransactionSuccessful(); // commit transaction
+            if(result <= 0) {
+
+                Log.println(Log.DEBUG, "Test", Integer.toString(result));
+
+            }
+
+            else {
+
+                Log.println(Log.DEBUG, "Test", "returning true from insert member function");
+
+            }
+
+        } catch (android.database.SQLException e) {
+            e.printStackTrace();
+            Log.println(Log.DEBUG, "Test", e.getMessage());
+
+        }
+        finally {
+            db.endTransaction();
+            //    db.close();
+        }
+
+        try
+        {
+            ContentValues contentValues15 = new ContentValues();
+
+            contentValues15.put("scheme_id", 15);
+            contentValues15.put("gender", "NA");
+            contentValues15.put("age", "18<=age<=23");
+            contentValues15.put("occupation", "Student");
+            contentValues15.put("caste", "OBC");
+            contentValues15.put("centreorstate", "state");
+            contentValues15.put("income", "NA");
+            contentValues15.put("familyIncome", "income<=800000");
+            contentValues15.put("description", "Tuition fees and examination fees to obc students");
+            contentValues15.put("link", "https://mahadbtmahait.gov.in/Home/Index");
+
+            db.beginTransaction();
+
+            result = (int) db.insertOrThrow("SCHEMES", null, contentValues15);
+            //    Log.println(Log.DEBUG, "TestResult", Integer.toString(result));
+
+            db.setTransactionSuccessful(); // commit transaction
+            if(result <= 0) {
+
+                Log.println(Log.DEBUG, "Test", Integer.toString(result));
+
+            }
+
+            else {
+
+                Log.println(Log.DEBUG, "Test", "returning true from insert member function");
+
+            }
+
+        } catch (android.database.SQLException e) {
+            e.printStackTrace();
+            Log.println(Log.DEBUG, "Test", e.getMessage());
+
+        }
+        finally {
+            db.endTransaction();
+            //    db.close();
+        }
+
+
 
 
 

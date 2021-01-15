@@ -151,6 +151,7 @@ public class PersonalInfoActivity extends AppCompatActivity implements AdapterVi
         list.add("Lawyer");
         list.add("Army");
         list.add("Student");
+        list.add("Teacher");
         list.add("Other");
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
