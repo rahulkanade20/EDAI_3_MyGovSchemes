@@ -129,7 +129,7 @@ public class DBHelper extends SQLiteOpenHelper {
             contentValues2.put("scheme_id", 2);
             contentValues2.put("gender", "NA");
             contentValues2.put("age", "NA");
-            contentValues2.put("occupation", "NA");
+            contentValues2.put("occupation", "Student");
             contentValues2.put("caste", "ST");
             contentValues2.put("centreorstate", "state");
             contentValues2.put("income", "NA");
